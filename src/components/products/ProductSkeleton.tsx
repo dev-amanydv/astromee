@@ -1,29 +1,23 @@
-'use client';
-
 import React from 'react';
 
 export function ProductCardSkeleton() {
   return (
     <div className="cosmic-card rounded-2xl p-3.5 sm:p-4 flex flex-col justify-between animate-pulse">
-      {/* Badge skeleton */}
-      <div className="flex items-center justify-between gap-2 mb-2">
+=      <div className="flex items-center justify-between gap-2 mb-2">
         <div className="h-4 w-16 bg-amberGold-100/70 rounded-full"></div>
         <div className="h-4 w-12 bg-rose-100/70 rounded-full"></div>
       </div>
 
-      {/* Image skeleton */}
       <div className="w-full aspect-square bg-gradient-to-b from-sunshine-200 to-amberGold-100/60 rounded-xl mb-3 flex items-center justify-center">
         <div className="w-8 h-8 rounded-full bg-amberGold-200/50"></div>
       </div>
 
-      {/* Title & Rating skeleton */}
       <div className="space-y-2 mb-3">
         <div className="h-4 w-4/5 bg-sunshine-300 rounded"></div>
         <div className="h-3 w-3/5 bg-sunshine-200 rounded"></div>
         <div className="h-3 w-2/5 bg-amberGold-100 rounded"></div>
       </div>
 
-      {/* Price & CTA skeleton */}
       <div className="mt-3 pt-2.5 border-t border-amberGold-100 flex items-center justify-between">
         <div className="h-5 w-14 bg-sunshine-300 rounded"></div>
         <div className="h-7 w-16 bg-amberGold-300/80 rounded-xl"></div>
@@ -45,11 +39,9 @@ export function ProductGridSkeleton({ count = 8 }: { count?: number }) {
 export function ProductDetailSkeleton() {
   return (
     <div className="animate-pulse space-y-8 max-w-6xl mx-auto py-8">
-      {/* Breadcrumb skeleton */}
       <div className="h-4 w-48 bg-amberGold-100 rounded-md"></div>
 
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-        {/* Gallery skeleton */}
         <div className="space-y-4">
           <div className="w-full aspect-square bg-gradient-to-b from-sunshine-200 to-amberGold-100/60 rounded-2xl"></div>
           <div className="flex gap-3">
@@ -62,7 +54,6 @@ export function ProductDetailSkeleton() {
           </div>
         </div>
 
-        {/* Info skeleton */}
         <div className="space-y-4">
           <div className="h-6 w-24 bg-amberGold-100 rounded-full"></div>
           <div className="h-8 w-4/5 bg-sunshine-300 rounded"></div>

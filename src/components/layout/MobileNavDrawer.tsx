@@ -1,16 +1,16 @@
 'use client';
 
 import React from 'react';
-import { useRouter, usePathname } from 'next/navigation';
 import { useApp } from '@/context/AppContext';
+import { useSectionNavigation } from '@/hooks/useSectionNavigation';
 
-interface NavItem {
+interface MobileNavItem {
   label: string;
   sectionId?: string;
   href?: string;
 }
 
-const MOBILE_NAV_ITEMS: NavItem[] = [
+const MOBILE_NAV_ITEMS: MobileNavItem[] = [
   { label: '🏠 Home', sectionId: 'heroSection' },
   { label: '🛍️ Astro Store', href: '/store' },
   { label: '👥 Astrologers (Live)', sectionId: 'astrologersSection' },
@@ -21,21 +21,12 @@ const MOBILE_NAV_ITEMS: NavItem[] = [
 ];
 
 export default function MobileNavDrawer() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const { isMobileNavOpen, setIsMobileNavOpen, scrollToSection } = useApp();
+  const { isMobileNavOpen, setIsMobileNavOpen } = useApp();
+  const { navigateTo } = useSectionNavigation();
 
-  const handleNavClick = (item: NavItem) => {
+  const handleNavClick = (item: MobileNavItem) => {
     setIsMobileNavOpen(false);
-    if (item.href) {
-      router.push(item.href);
-    } else if (item.sectionId) {
-      if (pathname === '/') {
-        scrollToSection(item.sectionId);
-      } else {
-        router.push(`/#${item.sectionId}`);
-      }
-    }
+    navigateTo(item.sectionId, item.href);
   };
 
   return (
@@ -54,7 +45,7 @@ export default function MobileNavDrawer() {
           >
             <span>{item.label}</span>
             {item.href === '/store' && (
-              <span className="text-[9px] bg-amberGold-500 text-white px-1.5 py-0.2 rounded-full font-black uppercase">
+              <span className="text-[9px] bg-amberGold-500 text-white px-1.5 py-0.5 rounded-full font-black uppercase">
                 New
               </span>
             )}

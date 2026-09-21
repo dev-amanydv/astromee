@@ -2,8 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { useRouter, usePathname } from 'next/navigation';
 import { useApp } from '@/context/AppContext';
+import { useSectionNavigation } from '@/hooks/useSectionNavigation';
 import { ZODIAC_SIGNS, ZodiacSign } from '@/data/horoscope';
 
 interface ConsultationMode {
@@ -56,17 +56,8 @@ const SCANNER_MODES = [
 ];
 
 export default function HeaderNav() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const { scrollToSection, setScanMode, setSelectedSign } = useApp();
-
-  const navigateOrScroll = (sectionId: string) => {
-    if (pathname === '/') {
-      scrollToSection(sectionId);
-    } else {
-      router.push(`/#${sectionId}`);
-    }
-  };
+  const { navigateOrScroll, pathname } = useSectionNavigation();
+  const { setScanMode, setSelectedSign } = useApp();
 
   const handleSelectSign = (sign: ZodiacSign) => {
     setSelectedSign(sign);
@@ -77,6 +68,8 @@ export default function HeaderNav() {
     setScanMode(mode);
     navigateOrScroll('aiScannerSection');
   };
+
+  const isStoreActive = pathname === '/store' || pathname.startsWith('/products');
 
   return (
     <nav className="hidden xl:flex items-center gap-1 text-[13px] font-bold text-darkSlate-700">
@@ -94,9 +87,7 @@ export default function HeaderNav() {
         <Link
           href="/store"
           className={`nav-link-btn px-3 py-2 rounded-xl hover:text-amberGold-700 hover:bg-amberGold-50/60 transition-all flex items-center gap-1.5 ${
-            pathname === '/store' || pathname.startsWith('/products')
-              ? 'text-amberGold-700 font-extrabold bg-amberGold-50/80'
-              : ''
+            isStoreActive ? 'text-amberGold-700 font-extrabold bg-amberGold-50/80' : ''
           }`}
         >
           <i className="fa-solid fa-gem text-amberGold-600 text-xs"></i>

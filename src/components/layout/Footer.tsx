@@ -1,9 +1,8 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
-import { useRouter, usePathname } from 'next/navigation';
 import { useApp } from '@/context/AppContext';
+import { useSectionNavigation } from '@/hooks/useSectionNavigation';
 
 const SOCIAL_LINKS = [
   { platform: 'Facebook', icon: 'fa-brands fa-facebook-f' },
@@ -27,7 +26,7 @@ const ASTROLOGY_TOOL_LINKS: FooterNavLink[] = [
   { label: "Today's Panchang & Muhurat", sectionId: 'panchangWidget' },
 ];
 
-const CONSULTATION_LINKS = [
+const CONSULTATION_LINKS: FooterNavLink[] = [
   { label: 'Chat with Astrologer', sectionId: 'astrologersSection' },
   { label: 'Talk to Astrologer', sectionId: 'astrologersSection' },
   { label: 'Love & Marriage Astrologers', sectionId: 'astrologersSection' },
@@ -59,21 +58,8 @@ const TRUST_LINKS = [
 ];
 
 export default function Footer() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const { showToast, scrollToSection } = useApp();
-
-  const handleNavClick = (sectionId?: string, href?: string) => {
-    if (href) {
-      router.push(href);
-    } else if (sectionId) {
-      if (pathname === '/') {
-        scrollToSection(sectionId);
-      } else {
-        router.push(`/#${sectionId}`);
-      }
-    }
-  };
+  const { showToast } = useApp();
+  const { navigateTo } = useSectionNavigation();
 
   return (
     <footer className="bg-white border-t border-amberGold-200/80 mt-16 pt-12 pb-8">
@@ -117,7 +103,7 @@ export default function Footer() {
               {ASTROLOGY_TOOL_LINKS.map((tool) => (
                 <li key={tool.label}>
                   <button
-                    onClick={() => handleNavClick(tool.sectionId, tool.href)}
+                    onClick={() => navigateTo(tool.sectionId, tool.href)}
                     className="hover:text-amberGold-700 text-left flex items-center gap-1"
                   >
                     {tool.label}
@@ -135,7 +121,7 @@ export default function Footer() {
               {CONSULTATION_LINKS.map((link, idx) => (
                 <li key={`${link.label}-${idx}`}>
                   <button
-                    onClick={() => handleNavClick(link.sectionId)}
+                    onClick={() => navigateTo(link.sectionId, link.href)}
                     className="hover:text-amberGold-700 text-left"
                   >
                     {link.label}

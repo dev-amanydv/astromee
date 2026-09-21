@@ -8,6 +8,20 @@ import ProductGrid from '@/components/products/ProductGrid';
 import { ProductGridSkeleton } from '@/components/products/ProductSkeleton';
 import ProductErrorState from '@/components/products/ProductErrorState';
 
+interface TrustFeature {
+  icon: string;
+  label: string;
+  bg: string;
+  color: string;
+}
+
+const TRUST_FEATURES: TrustFeature[] = [
+  { icon: '🕉️', label: '100% Vedic Energised', bg: 'bg-amberGold-100', color: 'text-amberGold-700' },
+  { icon: '💎', label: 'Certified Natural & Pure', bg: 'bg-emerald-100', color: 'text-emerald-700' },
+  { icon: '📦', label: 'Discreet & Fast Shipping', bg: 'bg-purple-100', color: 'text-purple-700' },
+  { icon: '🔮', label: 'Astrologer Verified', bg: 'bg-rose-100', color: 'text-rose-700' },
+];
+
 export default function FeaturedProductsSection() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -37,7 +51,6 @@ export default function FeaturedProductsSection() {
 
   return (
     <section id="cosmicStoreSection" className="space-y-6 pt-4">
-      {/* Section Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-amberGold-200/80 pb-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
@@ -66,7 +79,6 @@ export default function FeaturedProductsSection() {
         </Link>
       </div>
 
-      {/* Content Area */}
       {loading ? (
         <ProductGridSkeleton count={8} />
       ) : error ? (
@@ -79,32 +91,17 @@ export default function FeaturedProductsSection() {
         <ProductGrid products={products} />
       )}
 
-      {/* Trust Banner */}
       <div className="p-4 rounded-2xl bg-gradient-to-r from-sunshine-100 via-amberGold-50 to-sunshine-100 border border-amberGold-200 flex flex-wrap items-center justify-around gap-4 text-center">
-        <div className="flex items-center gap-2 text-xs font-bold text-darkSlate-800">
-          <span className="w-8 h-8 rounded-xl bg-amberGold-100 text-amberGold-700 flex items-center justify-center text-sm shadow-2xs">
-            🕉️
-          </span>
-          <span>100% Vedic Energised</span>
-        </div>
-        <div className="flex items-center gap-2 text-xs font-bold text-darkSlate-800">
-          <span className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm shadow-2xs">
-            💎
-          </span>
-          <span>Certified Natural & Pure</span>
-        </div>
-        <div className="flex items-center gap-2 text-xs font-bold text-darkSlate-800">
-          <span className="w-8 h-8 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-sm shadow-2xs">
-            📦
-          </span>
-          <span>Discreet & Fast Shipping</span>
-        </div>
-        <div className="flex items-center gap-2 text-xs font-bold text-darkSlate-800">
-          <span className="w-8 h-8 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center text-sm shadow-2xs">
-            🔮
-          </span>
-          <span>Astrologer Verified</span>
-        </div>
+        {TRUST_FEATURES.map((item) => (
+          <div key={item.label} className="flex items-center gap-2 text-xs font-bold text-darkSlate-800">
+            <span
+              className={`w-8 h-8 rounded-xl ${item.bg} ${item.color} flex items-center justify-center text-sm shadow-2xs`}
+            >
+              {item.icon}
+            </span>
+            <span>{item.label}</span>
+          </div>
+        ))}
       </div>
     </section>
   );

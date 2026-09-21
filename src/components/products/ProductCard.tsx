@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Product } from '@/types/product';
 import { useApp } from '@/context/AppContext';
+import { formatCurrency, calculateOriginalPrice } from '@/lib/utils/formatters';
 
 interface ProductCardProps {
   product: Product;
@@ -15,18 +16,8 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [imgSrc, setImgSrc] = useState(product.thumbnail || product.images?.[0] || '');
   const [imageError, setImageError] = useState(false);
 
-  const formattedPrice = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  }).format(product.price);
-
-  const originalPrice =
-    product.discountPercentage && product.discountPercentage > 0
-      ? new Intl.NumberFormat('en-US', {
-          style: 'currency',
-          currency: 'USD',
-        }).format(product.price / (1 - product.discountPercentage / 100))
-      : null;
+  const formattedPrice = formatCurrency(product.price);
+  const originalPrice = calculateOriginalPrice(product.price, product.discountPercentage);
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -38,22 +29,24 @@ export default function ProductCard({ product }: ProductCardProps) {
     );
   };
 
+  const formattedCategory = product.category.replace(/-/g, ' ');
+  const discountRound = product.discountPercentage ? Math.round(product.discountPercentage) : 0;
+  const reviewCount = product.reviews?.length || ((product.id * 7) % 50 + 5);
+
   return (
     <div className="cosmic-card rounded-2xl p-3.5 sm:p-4 flex flex-col justify-between group relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amberGold-500/10">
-      {/* Top badges */}
       <div className="flex items-center justify-between gap-2 mb-2 z-10">
         <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-amberGold-100 text-amberGold-800 border border-amberGold-200/80">
-          {product.category.replace(/-/g, ' ')}
+          {formattedCategory}
         </span>
 
-        {product.discountPercentage && product.discountPercentage > 0 && (
+        {discountRound > 0 && (
           <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 border border-rose-200 shadow-2xs">
-            -{Math.round(product.discountPercentage)}% OFF
+            -{discountRound}% OFF
           </span>
         )}
       </div>
 
-      {/* Product Image Area */}
       <Link
         href={`/products/${product.id}`}
         className="relative block w-full aspect-square bg-gradient-to-b from-sunshine-50 to-amberGold-50/40 rounded-xl overflow-hidden mb-3 group/img cursor-pointer"
@@ -64,7 +57,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             alt={product.title}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            className="object-contain p-3 group-hover/img:scale-108 transition-transform duration-300"
+            className="object-contain p-3 group-hover/img:scale-[1.08] transition-transform duration-300"
             onError={() => {
               setImageError(true);
               if (product.images && product.images[0] && product.images[0] !== imgSrc) {
@@ -80,7 +73,6 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
         )}
 
-        {/* Quick Add Overlay on Hover */}
         <button
           onClick={handleQuickAdd}
           className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 w-9 h-9 rounded-xl bg-white/95 text-amberGold-700 shadow-md border border-amberGold-200 flex items-center justify-center hover:bg-amberGold-500 hover:text-white active:scale-95"
@@ -91,7 +83,6 @@ export default function ProductCard({ product }: ProductCardProps) {
         </button>
       </Link>
 
-      {/* Details */}
       <div className="flex-1 flex flex-col justify-between">
         <div>
           <Link href={`/products/${product.id}`}>
@@ -103,7 +94,6 @@ export default function ProductCard({ product }: ProductCardProps) {
             </h4>
           </Link>
 
-          {/* Rating */}
           {typeof product.rating === 'number' && (
             <div className="flex items-center gap-1.5 mt-1.5">
               <div className="flex items-center text-amberGold-500 text-[11px]">
@@ -113,13 +103,12 @@ export default function ProductCard({ product }: ProductCardProps) {
                 {product.rating.toFixed(1)}
               </span>
               <span className="text-[10px] text-darkSlate-400 font-medium">
-                ({product.reviews?.length || (product.id * 7) % 50 + 5} reviews)
+                ({reviewCount} reviews)
               </span>
             </div>
           )}
         </div>
 
-        {/* Price and CTA */}
         <div className="mt-3 pt-2.5 border-t border-amberGold-100 flex items-center justify-between gap-2">
           <div>
             <div className="flex items-baseline gap-1.5">

@@ -3,6 +3,48 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useApp } from '@/context/AppContext';
 
+interface ScanStep {
+  percent: string;
+  text: string;
+  delay: number;
+}
+
+const SCAN_STEPS_BY_MODE: Record<'palm' | 'face', ScanStep[]> = {
+  palm: [
+    { percent: '35%', text: 'Scanning Heart Line & Mounts...', delay: 400 },
+    { percent: '75%', text: 'Calculating Wealth & Fate Line Geometry...', delay: 1000 },
+    { percent: '100%', text: 'Generating Full Destiny Report...', delay: 1600 },
+  ],
+  face: [
+    { percent: '35%', text: 'Mapping 68 Facial Landmarks...', delay: 400 },
+    { percent: '75%', text: 'Analyzing Planetary Facial Nodes...', delay: 1000 },
+    { percent: '100%', text: 'Generating Full Destiny Report...', delay: 1600 },
+  ],
+};
+
+const ANALYSIS_REPORT_ITEMS = [
+  {
+    icon: '❤️',
+    title: 'Heart & Emotion Line:',
+    content: (
+      <>
+        Deep, unbroken curved line reaching Jupiter Mount. Indicates passionate romantic
+        bonds, high emotional empathy, and stable long-term fidelity.
+      </>
+    ),
+  },
+  {
+    icon: '⚡',
+    title: 'Wealth Mount & Fate Line:',
+    content: (
+      <>
+        Prominent Sun and Mercury mounts indicating business acumen. Strong financial
+        growth spike predicted between <strong>ages 28 to 33</strong>.
+      </>
+    ),
+  },
+];
+
 export default function BiometricScanner() {
   const { scanMode, setScanMode, setIsWalletModalOpen, showToast } = useApp();
   const [isScanning, setIsScanning] = useState(false);
@@ -28,30 +70,15 @@ export default function BiometricScanner() {
         : 'Mapping 68 Facial Landmarks...'
     );
 
-    const t1 = setTimeout(() => {
-      setProgressPercent('35%');
-      setProgressText(
-        scanMode === 'palm'
-          ? 'Scanning Heart Line & Mounts...'
-          : 'Mapping 68 Facial Landmarks...'
-      );
-    }, 400);
+    const steps = SCAN_STEPS_BY_MODE[scanMode];
+    const scheduledTimeouts = steps.map((step) =>
+      setTimeout(() => {
+        setProgressPercent(step.percent);
+        setProgressText(step.text);
+      }, step.delay)
+    );
 
-    const t2 = setTimeout(() => {
-      setProgressPercent('75%');
-      setProgressText(
-        scanMode === 'palm'
-          ? 'Calculating Wealth & Fate Line Geometry...'
-          : 'Analyzing Planetary Facial Nodes...'
-      );
-    }, 1000);
-
-    const t3 = setTimeout(() => {
-      setProgressPercent('100%');
-      setProgressText('Generating Full Destiny Report...');
-    }, 1600);
-
-    const t4 = setTimeout(() => {
+    const completionTimeout = setTimeout(() => {
       setIsScanning(false);
       showToast(
         '✨ Destiny Scan Complete',
@@ -60,7 +87,7 @@ export default function BiometricScanner() {
       );
     }, 2100);
 
-    timeoutsRef.current = [t1, t2, t3, t4];
+    timeoutsRef.current = [...scheduledTimeouts, completionTimeout];
   };
 
   return (
@@ -202,31 +229,22 @@ export default function BiometricScanner() {
           </div>
 
           <div id="scanResultsContainer" className="space-y-3">
-            <div className="p-3.5 rounded-2xl bg-amberGold-50/70 border border-amberGold-200 flex gap-3 items-start">
-              <div className="w-8 h-8 rounded-xl bg-amberGold-500 text-white flex items-center justify-center text-xs flex-shrink-0 mt-0.5 shadow-xs">
-                ❤️
+            {ANALYSIS_REPORT_ITEMS.map((item) => (
+              <div
+                key={item.title}
+                className="p-3.5 rounded-2xl bg-amberGold-50/70 border border-amberGold-200 flex gap-3 items-start"
+              >
+                <div className="w-8 h-8 rounded-xl bg-amberGold-500 text-white flex items-center justify-center text-xs flex-shrink-0 mt-0.5 shadow-xs">
+                  {item.icon}
+                </div>
+                <div>
+                  <p className="text-xs font-black text-amberGold-800">{item.title}</p>
+                  <p className="text-xs text-darkSlate-700 font-medium leading-relaxed mt-0.5">
+                    {item.content}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="text-xs font-black text-amberGold-800">Heart &amp; Emotion Line:</p>
-                <p className="text-xs text-darkSlate-700 font-medium leading-relaxed mt-0.5">
-                  Deep, unbroken curved line reaching Jupiter Mount. Indicates passionate romantic
-                  bonds, high emotional empathy, and stable long-term fidelity.
-                </p>
-              </div>
-            </div>
-
-            <div className="p-3.5 rounded-2xl bg-amberGold-50/70 border border-amberGold-200 flex gap-3 items-start">
-              <div className="w-8 h-8 rounded-xl bg-amberGold-500 text-white flex items-center justify-center text-xs flex-shrink-0 mt-0.5 shadow-xs">
-                ⚡
-              </div>
-              <div>
-                <p className="text-xs font-black text-amberGold-800">Wealth Mount &amp; Fate Line:</p>
-                <p className="text-xs text-darkSlate-700 font-medium leading-relaxed mt-0.5">
-                  Prominent Sun and Mercury mounts indicating business acumen. Strong financial
-                  growth spike predicted between <strong>ages 28 to 33</strong>.
-                </p>
-              </div>
-            </div>
+            ))}
 
             <div className="relative p-5 rounded-2xl bg-gradient-to-r from-sunshine-100 to-amberGold-50 border-2 border-amberGold-300 overflow-hidden text-center space-y-2">
               <div className="filter blur-xs select-none text-[11px] text-darkSlate-400 space-y-1">

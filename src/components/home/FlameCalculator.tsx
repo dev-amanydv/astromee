@@ -3,32 +3,37 @@
 import React, { useState } from 'react';
 import { useApp } from '@/context/AppContext';
 
+interface FlameOutcome {
+  title: string;
+  desc: string;
+}
+
+const FLAME_OUTCOMES: FlameOutcome[] = [
+  {
+    title: 'L - Love (94% Compatibility)',
+    desc: 'Deep romantic connection, intense planetary harmony & soulmate alignment!',
+  },
+  {
+    title: 'A - Affection (88% Compatibility)',
+    desc: 'Warm mutual respect, excellent communication and strong long-term bonding.',
+  },
+  {
+    title: 'M - Marriage (98% Auspicious Match)',
+    desc: 'Rare planetary alignment indicating blessed, prosperous lifelong union!',
+  },
+];
+
 export default function FlameCalculator() {
   const { scrollToSection } = useApp();
   const [yourName, setYourName] = useState('');
   const [partnerName, setPartnerName] = useState('');
-  const [result, setResult] = useState<{ title: string; desc: string } | null>(null);
+  const [result, setResult] = useState<FlameOutcome | null>(null);
 
   const calculateFlame = (e: React.FormEvent) => {
     e.preventDefault();
     if (!yourName.trim() || !partnerName.trim()) return;
 
-    const outcomes = [
-      {
-        title: 'L - Love (94% Compatibility)',
-        desc: 'Deep romantic connection, intense planetary harmony & soulmate alignment!',
-      },
-      {
-        title: 'A - Affection (88% Compatibility)',
-        desc: 'Warm mutual respect, excellent communication and strong long-term bonding.',
-      },
-      {
-        title: 'M - Marriage (98% Auspicious Match)',
-        desc: 'Rare planetary alignment indicating blessed, prosperous lifelong union!',
-      },
-    ];
-
-    const pick = outcomes[Math.floor(Math.random() * outcomes.length)];
+    const pick = FLAME_OUTCOMES[Math.floor(Math.random() * FLAME_OUTCOMES.length)];
     setResult(pick);
   };
 

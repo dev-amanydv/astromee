@@ -9,27 +9,34 @@ interface ChatMessage {
   text: string;
 }
 
+const DEFAULT_WELCOME_MESSAGE: ChatMessage = {
+  id: 'welcome',
+  sender: 'astro',
+  text: 'Namaste 🙏 Welcome to Astromee Consultation. I am ready with your chart. Please share your specific question regarding Love, Marriage, or Career!',
+};
+
+function formatTimer(seconds: number): string {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+}
+
 export default function ChatModal() {
   const { activeChatAstro, isChatModalOpen, closeChatModal } = useApp();
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      id: 'welcome',
-      sender: 'astro',
-      text: 'Namaste 🙏 Welcome to Astromee Consultation. I am ready with your chart. Please share your specific question regarding Love, Marriage, or Career!',
-    },
-  ]);
+  const [messages, setMessages] = useState<ChatMessage[]>([DEFAULT_WELCOME_MESSAGE]);
   const [inputValue, setInputValue] = useState('');
   const [timeLeft, setTimeLeft] = useState(300); // 5 minutes
   const chatMessagesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isChatModalOpen) {
+      setTimeLeft(300);
       const timer = setInterval(() => {
         setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
       }, 1000);
       return () => clearInterval(timer);
     }
-  }, [isChatModalOpen]);
+  }, [isChatModalOpen, activeChatAstro]);
 
   useEffect(() => {
     if (chatMessagesRef.current) {
@@ -38,12 +45,6 @@ export default function ChatModal() {
   }, [messages]);
 
   if (!isChatModalOpen || !activeChatAstro) return null;
-
-  const formatTimer = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  };
 
   const handleSend = () => {
     if (!inputValue.trim()) return;
