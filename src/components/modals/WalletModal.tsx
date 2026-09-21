@@ -3,9 +3,39 @@
 import React, { useState } from 'react';
 import { useApp } from '@/context/AppContext';
 
+interface RechargePack {
+  cost: number;
+  coins: number;
+  name: string;
+  bonusText: string;
+  isPopular?: boolean;
+}
+
+const RECHARGE_PACKS: RechargePack[] = [
+  {
+    cost: 99,
+    coins: 100,
+    name: 'Starter Pack',
+    bonusText: '+ 20 Bonus Coins',
+  },
+  {
+    cost: 199,
+    coins: 250,
+    name: 'Popular Destiny Pack',
+    bonusText: '+ 50 Bonus Coins',
+    isPopular: true,
+  },
+  {
+    cost: 499,
+    coins: 700,
+    name: 'VIP Astrologer Pack',
+    bonusText: '+ Free Palm & Kundli PDF',
+  },
+];
+
 export default function WalletModal() {
   const { isWalletModalOpen, setIsWalletModalOpen, addCoins, showToast } = useApp();
-  const [selectedPack, setSelectedPack] = useState({ cost: 199, coins: 250 });
+  const [selectedPack, setSelectedPack] = useState(RECHARGE_PACKS[1]); // Default 199 pack
 
   if (!isWalletModalOpen) return null;
 
@@ -13,6 +43,22 @@ export default function WalletModal() {
     addCoins(selectedPack.coins);
     showToast('🎉 Recharge Success', `Added ${selectedPack.coins} coins to your wallet!`, '🪙');
     setIsWalletModalOpen(false);
+  };
+
+  const getPackClassNames = (pack: RechargePack) => {
+    const isSelected = selectedPack.cost === pack.cost;
+
+    if (pack.isPopular) {
+      return `recharge-pack p-4 rounded-2xl border-2 cursor-pointer flex items-center justify-between transition-all relative shadow-sm bg-gradient-to-r from-amberGold-50 via-amberGold-100/90 to-amberGold-50 border-amberGold-500 ${
+        isSelected ? 'ring-2 ring-amberGold-400/40' : ''
+      }`;
+    }
+
+    return `recharge-pack p-4 rounded-2xl border-2 cursor-pointer flex items-center justify-between transition-all ${
+      isSelected
+        ? 'bg-amberGold-50 border-amberGold-500 shadow-sm'
+        : 'bg-sunshine-50 border-amberGold-200 hover:border-amberGold-500'
+    }`;
   };
 
   return (
@@ -24,6 +70,7 @@ export default function WalletModal() {
         <button
           onClick={() => setIsWalletModalOpen(false)}
           className="absolute top-5 right-5 text-darkSlate-400 hover:text-darkSlate-800 p-2 rounded-full hover:bg-sunshine-100 transition-colors"
+          aria-label="Close modal"
         >
           <i className="fa-solid fa-xmark text-lg"></i>
         </button>
@@ -42,66 +89,27 @@ export default function WalletModal() {
 
         {/* Recharge Pack Options */}
         <div className="space-y-3">
-          <div
-            onClick={() => setSelectedPack({ cost: 99, coins: 100 })}
-            className={`recharge-pack p-4 rounded-2xl border-2 cursor-pointer flex items-center justify-between transition-all ${
-              selectedPack.cost === 99
-                ? 'bg-amberGold-50 border-amberGold-500 shadow-sm'
-                : 'bg-sunshine-50 border-amberGold-200 hover:border-amberGold-500'
-            }`}
-          >
-            <div>
-              <span className="text-xs font-extrabold text-amberGold-800">Starter Pack</span>
-              <div className="text-sm font-black text-darkSlate-900">
-                100 Coins{' '}
-                <span className="text-emerald-600 text-xs font-bold">+ 20 Bonus Coins</span>
-              </div>
-            </div>
-            <span className="text-base font-black text-amberGold-700">₹99</span>
-          </div>
-
-          <div
-            onClick={() => setSelectedPack({ cost: 199, coins: 250 })}
-            className={`recharge-pack p-4 rounded-2xl border-2 cursor-pointer flex items-center justify-between transition-all relative shadow-sm ${
-              selectedPack.cost === 199
-                ? 'bg-gradient-to-r from-amberGold-50 via-amberGold-100/90 to-amberGold-50 border-amberGold-500 ring-2 ring-amberGold-400/40'
-                : 'bg-gradient-to-r from-amberGold-50 via-amberGold-100/90 to-amberGold-50 border-amberGold-500'
-            }`}
-          >
-            <span className="absolute -top-2.5 right-4 bg-amberGold-500 text-white text-[9px] font-black px-2.5 py-0.5 rounded-full shadow-xs uppercase">
-              BEST VALUE
-            </span>
-            <div>
-              <span className="text-xs font-extrabold text-amberGold-800">
-                Popular Destiny Pack
-              </span>
-              <div className="text-sm font-black text-darkSlate-900">
-                250 Coins{' '}
-                <span className="text-emerald-600 text-xs font-bold">+ 50 Bonus Coins</span>
-              </div>
-            </div>
-            <span className="text-base font-black text-amberGold-700">₹199</span>
-          </div>
-
-          <div
-            onClick={() => setSelectedPack({ cost: 499, coins: 700 })}
-            className={`recharge-pack p-4 rounded-2xl border-2 cursor-pointer flex items-center justify-between transition-all ${
-              selectedPack.cost === 499
-                ? 'bg-amberGold-50 border-amberGold-500 shadow-sm'
-                : 'bg-sunshine-50 border-amberGold-200 hover:border-amberGold-500'
-            }`}
-          >
-            <div>
-              <span className="text-xs font-extrabold text-amberGold-800">VIP Astrologer Pack</span>
-              <div className="text-sm font-black text-darkSlate-900">
-                700 Coins{' '}
-                <span className="text-emerald-600 text-xs font-bold">
-                  + Free Palm &amp; Kundli PDF
+          {RECHARGE_PACKS.map((pack) => (
+            <div
+              key={pack.cost}
+              onClick={() => setSelectedPack(pack)}
+              className={getPackClassNames(pack)}
+            >
+              {pack.isPopular && (
+                <span className="absolute -top-2.5 right-4 bg-amberGold-500 text-white text-[9px] font-black px-2.5 py-0.5 rounded-full shadow-xs uppercase">
+                  BEST VALUE
                 </span>
+              )}
+              <div>
+                <span className="text-xs font-extrabold text-amberGold-800">{pack.name}</span>
+                <div className="text-sm font-black text-darkSlate-900">
+                  {pack.coins} Coins{' '}
+                  <span className="text-emerald-600 text-xs font-bold">{pack.bonusText}</span>
+                </div>
               </div>
+              <span className="text-base font-black text-amberGold-700">₹{pack.cost}</span>
             </div>
-            <span className="text-base font-black text-amberGold-700">₹499</span>
-          </div>
+          ))}
         </div>
 
         {/* Payment Action */}

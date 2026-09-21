@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { useApp } from '@/context/AppContext';
 import { ASTROLOGERS } from '@/data/astrologers';
 

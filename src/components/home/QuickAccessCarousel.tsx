@@ -57,7 +57,7 @@ export default function QuickAccessCarousel() {
         </div>
         <span className="text-xs text-darkSlate-800 font-bold">{item.label}</span>
         {item.badge && (
-          <span className="bg-purple-100 text-purple-700 text-[9px] px-1.5 py-0.2 rounded font-black">
+          <span className="bg-purple-100 text-purple-700 text-[9px] px-1.5 py-0.5 rounded font-black">
             {item.badge}
           </span>
         )}

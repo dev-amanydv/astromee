@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useApp } from '@/context/AppContext';
 
 export default function BiometricScanner() {
@@ -8,8 +8,19 @@ export default function BiometricScanner() {
   const [isScanning, setIsScanning] = useState(false);
   const [progressPercent, setProgressPercent] = useState('0%');
   const [progressText, setProgressText] = useState('Analyzing Biometric Lines...');
+  const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
+
+  // Cleanup pending timeouts on unmount
+  useEffect(() => {
+    return () => {
+      timeoutsRef.current.forEach(clearTimeout);
+    };
+  }, []);
 
   const simulateScan = () => {
+    timeoutsRef.current.forEach(clearTimeout);
+    timeoutsRef.current = [];
+
     setIsScanning(true);
     setProgressPercent('0%');
     setProgressText(
@@ -18,7 +29,7 @@ export default function BiometricScanner() {
         : 'Mapping 68 Facial Landmarks...'
     );
 
-    setTimeout(() => {
+    const t1 = setTimeout(() => {
       setProgressPercent('35%');
       setProgressText(
         scanMode === 'palm'
@@ -27,7 +38,7 @@ export default function BiometricScanner() {
       );
     }, 400);
 
-    setTimeout(() => {
+    const t2 = setTimeout(() => {
       setProgressPercent('75%');
       setProgressText(
         scanMode === 'palm'
@@ -36,12 +47,12 @@ export default function BiometricScanner() {
       );
     }, 1000);
 
-    setTimeout(() => {
+    const t3 = setTimeout(() => {
       setProgressPercent('100%');
       setProgressText('Generating Full Destiny Report...');
     }, 1600);
 
-    setTimeout(() => {
+    const t4 = setTimeout(() => {
       setIsScanning(false);
       showToast(
         '✨ Destiny Scan Complete',
@@ -49,6 +60,8 @@ export default function BiometricScanner() {
         '✋'
       );
     }, 2100);
+
+    timeoutsRef.current = [t1, t2, t3, t4];
   };
 
   return (
@@ -141,7 +154,7 @@ export default function BiometricScanner() {
                   type="file"
                   accept="image/*"
                   className="hidden"
-                  onChange={() => simulateScan()}
+                  onChange={simulateScan}
                 />
               </label>
             </div>

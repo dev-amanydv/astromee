@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import TopStatusBar from '@/components/layout/TopStatusBar';
 import Header from '@/components/layout/Header';

@@ -3,6 +3,8 @@
 import React from 'react';
 import { useApp } from '@/context/AppContext';
 
+const SUPPORTED_LANGUAGES = ['English', 'हिन्दी', 'தமிழ்', 'मराठी'] as const;
+
 export default function TopStatusBar() {
   const { currentLanguage, setCurrentLanguage, showToast, scrollToSection } = useApp();
 
@@ -55,30 +57,17 @@ export default function TopStatusBar() {
               <i className="fa-solid fa-chevron-down text-[8px] opacity-70"></i>
             </button>
             <div className="absolute right-0 top-full mt-1.5 w-28 bg-white rounded-xl shadow-xl border border-amberGold-200 py-1.5 text-darkSlate-800 text-xs font-semibold opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all z-50">
-              <button
-                onClick={() => handleSetLanguage('English')}
-                className="w-full text-left px-3 py-1 hover:bg-amberGold-50 text-amberGold-800"
-              >
-                English
-              </button>
-              <button
-                onClick={() => handleSetLanguage('हिन्दी')}
-                className="w-full text-left px-3 py-1 hover:bg-amberGold-50"
-              >
-                हिन्दी
-              </button>
-              <button
-                onClick={() => handleSetLanguage('தமிழ்')}
-                className="w-full text-left px-3 py-1 hover:bg-amberGold-50"
-              >
-                தமிழ்
-              </button>
-              <button
-                onClick={() => handleSetLanguage('मराठी')}
-                className="w-full text-left px-3 py-1 hover:bg-amberGold-50"
-              >
-                मराठी
-              </button>
+              {SUPPORTED_LANGUAGES.map((lang) => (
+                <button
+                  key={lang}
+                  onClick={() => handleSetLanguage(lang)}
+                  className={`w-full text-left px-3 py-1 hover:bg-amberGold-50 ${
+                    currentLanguage === lang ? 'text-amberGold-800' : ''
+                  }`}
+                >
+                  {lang}
+                </button>
+              ))}
             </div>
           </div>
         </div>

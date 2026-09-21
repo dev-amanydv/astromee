@@ -3,6 +3,52 @@
 import React from 'react';
 import { useApp } from '@/context/AppContext';
 
+const SOCIAL_LINKS = [
+  { platform: 'Facebook', icon: 'fa-brands fa-facebook-f' },
+  { platform: 'Instagram', icon: 'fa-brands fa-instagram' },
+  { platform: 'X (Twitter)', icon: 'fa-brands fa-x-twitter' },
+  { platform: 'YouTube', icon: 'fa-brands fa-youtube' },
+];
+
+const ASTROLOGY_TOOL_LINKS = [
+  { label: 'Daily Horoscope', sectionId: 'horoscopeSection' },
+  { label: 'Free Kundli Birth Chart', sectionId: 'kundliSection' },
+  { label: 'FLAME Match Calculator', sectionId: 'flameSection' },
+  { label: 'AI Palm Scanner', sectionId: 'aiScannerSection' },
+  { label: "Today's Panchang & Muhurat", sectionId: 'panchangWidget' },
+];
+
+const CONSULTATION_LINKS = [
+  { label: 'Chat with Astrologer', sectionId: 'astrologersSection' },
+  { label: 'Talk to Astrologer', sectionId: 'astrologersSection' },
+  { label: 'Love & Marriage Astrologers', sectionId: 'astrologersSection' },
+  { label: 'Career Guidance Masters', sectionId: 'astrologersSection' },
+  { label: 'Tarot Card Readers', sectionId: 'astrologersSection' },
+];
+
+const TRUST_LINKS = [
+  {
+    label: '100% Privacy Guarantee',
+    toastTitle: '🔒 Privacy',
+    toastMsg: 'All chats are 100% encrypted & confidential',
+  },
+  {
+    label: 'Terms & Conditions',
+    toastTitle: '📄 Terms',
+    toastMsg: 'Standard Astromee Terms of Use applied',
+  },
+  {
+    label: 'Refund Policy',
+    toastTitle: '💳 Refund',
+    toastMsg: '100% Satisfaction Refund Policy',
+  },
+  {
+    label: '24/7 Customer Support',
+    toastTitle: '💬 Support',
+    toastMsg: 'Contact us at support@astromee.com',
+  },
+];
+
 export default function Footer() {
   const { showToast, scrollToSection } = useApp();
 
@@ -24,46 +70,20 @@ export default function Footer() {
               Astromee is India&apos;s premier trusted Vedic astrology and spiritual consultation platform, bringing accurate astrological calculations, AI biometric palm reading, and live verified consultations.
             </p>
             <div className="flex items-center gap-3 text-amberGold-600 text-sm">
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  showToast('📱 Social', 'Following Astromee on Facebook');
-                }}
-                className="w-8 h-8 rounded-full bg-amberGold-50 border border-amberGold-200 flex items-center justify-center hover:bg-amberGold-500 hover:text-white transition-colors"
-              >
-                <i className="fa-brands fa-facebook-f"></i>
-              </a>
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  showToast('📱 Social', 'Following Astromee on Instagram');
-                }}
-                className="w-8 h-8 rounded-full bg-amberGold-50 border border-amberGold-200 flex items-center justify-center hover:bg-amberGold-500 hover:text-white transition-colors"
-              >
-                <i className="fa-brands fa-instagram"></i>
-              </a>
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  showToast('📱 Social', 'Following Astromee on X (Twitter)');
-                }}
-                className="w-8 h-8 rounded-full bg-amberGold-50 border border-amberGold-200 flex items-center justify-center hover:bg-amberGold-500 hover:text-white transition-colors"
-              >
-                <i className="fa-brands fa-x-twitter"></i>
-              </a>
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  showToast('📱 Social', 'Following Astromee on YouTube');
-                }}
-                className="w-8 h-8 rounded-full bg-amberGold-50 border border-amberGold-200 flex items-center justify-center hover:bg-amberGold-500 hover:text-white transition-colors"
-              >
-                <i className="fa-brands fa-youtube"></i>
-              </a>
+              {SOCIAL_LINKS.map((item) => (
+                <a
+                  key={item.platform}
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    showToast('📱 Social', `Following Astromee on ${item.platform}`);
+                  }}
+                  className="w-8 h-8 rounded-full bg-amberGold-50 border border-amberGold-200 flex items-center justify-center hover:bg-amberGold-500 hover:text-white transition-colors"
+                  aria-label={item.platform}
+                >
+                  <i className={item.icon}></i>
+                </a>
+              ))}
             </div>
           </div>
 
@@ -73,46 +93,16 @@ export default function Footer() {
               Astrology Tools
             </h5>
             <ul className="space-y-2 text-darkSlate-600 font-medium">
-              <li>
-                <button
-                  onClick={() => scrollToSection('horoscopeSection')}
-                  className="hover:text-amberGold-700 text-left"
-                >
-                  Daily Horoscope
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('kundliSection')}
-                  className="hover:text-amberGold-700 text-left"
-                >
-                  Free Kundli Birth Chart
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('flameSection')}
-                  className="hover:text-amberGold-700 text-left"
-                >
-                  FLAME Match Calculator
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('aiScannerSection')}
-                  className="hover:text-amberGold-700 text-left"
-                >
-                  AI Palm Scanner
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('panchangWidget')}
-                  className="hover:text-amberGold-700 text-left"
-                >
-                  Today&apos;s Panchang & Muhurat
-                </button>
-              </li>
+              {ASTROLOGY_TOOL_LINKS.map((tool) => (
+                <li key={tool.label}>
+                  <button
+                    onClick={() => scrollToSection(tool.sectionId)}
+                    className="hover:text-amberGold-700 text-left"
+                  >
+                    {tool.label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -122,46 +112,16 @@ export default function Footer() {
               Consultations
             </h5>
             <ul className="space-y-2 text-darkSlate-600 font-medium">
-              <li>
-                <button
-                  onClick={() => scrollToSection('astrologersSection')}
-                  className="hover:text-amberGold-700 text-left"
-                >
-                  Chat with Astrologer
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('astrologersSection')}
-                  className="hover:text-amberGold-700 text-left"
-                >
-                  Talk to Astrologer
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('astrologersSection')}
-                  className="hover:text-amberGold-700 text-left"
-                >
-                  Love & Marriage Astrologers
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('astrologersSection')}
-                  className="hover:text-amberGold-700 text-left"
-                >
-                  Career Guidance Masters
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('astrologersSection')}
-                  className="hover:text-amberGold-700 text-left"
-                >
-                  Tarot Card Readers
-                </button>
-              </li>
+              {CONSULTATION_LINKS.map((link, idx) => (
+                <li key={`${link.label}-${idx}`}>
+                  <button
+                    onClick={() => scrollToSection(link.sectionId)}
+                    className="hover:text-amberGold-700 text-left"
+                  >
+                    {link.label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -171,38 +131,16 @@ export default function Footer() {
               Trust & Support
             </h5>
             <ul className="space-y-2 text-darkSlate-600 font-medium">
-              <li>
-                <button
-                  onClick={() => showToast('🔒 Privacy', 'All chats are 100% encrypted & confidential')}
-                  className="hover:text-amberGold-700 text-left"
-                >
-                  100% Privacy Guarantee
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => showToast('📄 Terms', 'Standard Astromee Terms of Use applied')}
-                  className="hover:text-amberGold-700 text-left"
-                >
-                  Terms & Conditions
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => showToast('💳 Refund', '100% Satisfaction Refund Policy')}
-                  className="hover:text-amberGold-700 text-left"
-                >
-                  Refund Policy
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => showToast('💬 Support', 'Contact us at support@astromee.com')}
-                  className="hover:text-amberGold-700 text-left"
-                >
-                  24/7 Customer Support
-                </button>
-              </li>
+              {TRUST_LINKS.map((link) => (
+                <li key={link.label}>
+                  <button
+                    onClick={() => showToast(link.toastTitle, link.toastMsg)}
+                    className="hover:text-amberGold-700 text-left"
+                  >
+                    {link.label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

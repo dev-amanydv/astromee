@@ -9,6 +9,15 @@ interface SearchItem {
   type: string;
 }
 
+interface QuickSuggestion {
+  label: string;
+  badge: string;
+  badgeBg: string;
+  badgeText: string;
+  hoverBg: string;
+  sectionId: string;
+}
+
 const SEARCH_ITEMS: SearchItem[] = [
   { name: 'Acharya Ananya - Vedic, Tarot, Numerology', section: 'astrologersSection', type: 'Astrologer' },
   { name: 'Pandit Devraj Sharma - Kundli, KP System', section: 'astrologersSection', type: 'Astrologer' },
@@ -22,6 +31,41 @@ const SEARCH_ITEMS: SearchItem[] = [
   { name: 'Gemini Daily Horoscope', section: 'horoscopeSection', type: 'Horoscope' },
   { name: 'Leo Daily Horoscope', section: 'horoscopeSection', type: 'Horoscope' },
   { name: "Today's Panchang & Auspicious Muhurat", section: 'panchangWidget', type: 'Panchang' },
+];
+
+const QUICK_SUGGESTIONS: QuickSuggestion[] = [
+  {
+    label: '💬 Acharya Ananya (Vedic & Tarot)',
+    badge: 'ONLINE',
+    badgeBg: 'bg-emerald-100',
+    badgeText: 'text-emerald-800',
+    hoverBg: 'hover:bg-amberGold-50',
+    sectionId: 'astrologersSection',
+  },
+  {
+    label: '✋ AI Palm Destiny Reader',
+    badge: 'FREE TEASER',
+    badgeBg: 'bg-purple-100',
+    badgeText: 'text-purple-800',
+    hoverBg: 'hover:bg-purple-50',
+    sectionId: 'aiScannerSection',
+  },
+  {
+    label: '📜 Vedic Kundli Birth Chart PDF',
+    badge: 'INSTANT',
+    badgeBg: 'bg-emerald-100',
+    badgeText: 'text-emerald-800',
+    hoverBg: 'hover:bg-emerald-50',
+    sectionId: 'kundliSection',
+  },
+  {
+    label: '❤️ FLAME Love & Marriage Match Test',
+    badge: 'FREE',
+    badgeBg: 'bg-rose-100',
+    badgeText: 'text-rose-800',
+    hoverBg: 'hover:bg-rose-50',
+    sectionId: 'flameSection',
+  },
 ];
 
 export default function SpotlightModal() {
@@ -70,6 +114,7 @@ export default function SpotlightModal() {
           <button
             onClick={() => setIsSpotlightOpen(false)}
             className="absolute right-3 top-3 text-darkSlate-400 hover:text-darkSlate-700 p-1"
+            aria-label="Close search"
           >
             <i className="fa-solid fa-xmark"></i>
           </button>
@@ -81,42 +126,20 @@ export default function SpotlightModal() {
               <div className="p-2 text-[11px] font-bold text-darkSlate-400 uppercase tracking-wider">
                 Quick Suggestions
               </div>
-              <div
-                onClick={() => handleSelect('astrologersSection')}
-                className="p-2.5 rounded-xl hover:bg-amberGold-50 cursor-pointer flex items-center justify-between"
-              >
-                <span className="font-bold text-darkSlate-800">💬 Acharya Ananya (Vedic &amp; Tarot)</span>
-                <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full">
-                  ONLINE
-                </span>
-              </div>
-              <div
-                onClick={() => handleSelect('aiScannerSection')}
-                className="p-2.5 rounded-xl hover:bg-purple-50 cursor-pointer flex items-center justify-between"
-              >
-                <span className="font-bold text-darkSlate-800">✋ AI Palm Destiny Reader</span>
-                <span className="text-[10px] bg-purple-100 text-purple-800 font-bold px-2 py-0.5 rounded-full">
-                  FREE TEASER
-                </span>
-              </div>
-              <div
-                onClick={() => handleSelect('kundliSection')}
-                className="p-2.5 rounded-xl hover:bg-emerald-50 cursor-pointer flex items-center justify-between"
-              >
-                <span className="font-bold text-darkSlate-800">📜 Vedic Kundli Birth Chart PDF</span>
-                <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full">
-                  INSTANT
-                </span>
-              </div>
-              <div
-                onClick={() => handleSelect('flameSection')}
-                className="p-2.5 rounded-xl hover:bg-rose-50 cursor-pointer flex items-center justify-between"
-              >
-                <span className="font-bold text-darkSlate-800">❤️ FLAME Love &amp; Marriage Match Test</span>
-                <span className="text-[10px] bg-rose-100 text-rose-800 font-bold px-2 py-0.5 rounded-full">
-                  FREE
-                </span>
-              </div>
+              {QUICK_SUGGESTIONS.map((item) => (
+                <div
+                  key={item.label}
+                  onClick={() => handleSelect(item.sectionId)}
+                  className={`p-2.5 rounded-xl ${item.hoverBg} cursor-pointer flex items-center justify-between transition-colors`}
+                >
+                  <span className="font-bold text-darkSlate-800">{item.label}</span>
+                  <span
+                    className={`text-[10px] ${item.badgeBg} ${item.badgeText} font-bold px-2 py-0.5 rounded-full`}
+                  >
+                    {item.badge}
+                  </span>
+                </div>
+              ))}
             </>
           ) : filteredItems.length === 0 ? (
             <div className="p-4 text-center text-darkSlate-500 font-medium">

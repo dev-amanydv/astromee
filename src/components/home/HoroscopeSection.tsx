@@ -4,6 +4,50 @@ import React from 'react';
 import { useApp } from '@/context/AppContext';
 import { ZODIAC_SIGNS } from '@/data/horoscope';
 
+interface PanchangItem {
+  label: string;
+  value: string;
+  cardBg: string;
+  borderColor: string;
+  labelColor: string;
+  valueColor: string;
+}
+
+const PANCHANG_ITEMS: PanchangItem[] = [
+  {
+    label: 'Tithi',
+    value: 'Shukla Paksha Dashami',
+    cardBg: 'bg-sunshine-50',
+    borderColor: 'border-amberGold-200',
+    labelColor: 'text-darkSlate-500',
+    valueColor: 'text-darkSlate-900',
+  },
+  {
+    label: 'Nakshatra',
+    value: 'Rohini Nakshatra',
+    cardBg: 'bg-sunshine-50',
+    borderColor: 'border-amberGold-200',
+    labelColor: 'text-darkSlate-500',
+    valueColor: 'text-darkSlate-900',
+  },
+  {
+    label: 'Abhijit Muhurat (Auspicious)',
+    value: '11:45 AM - 12:35 PM',
+    cardBg: 'bg-emerald-50',
+    borderColor: 'border-emerald-200',
+    labelColor: 'text-emerald-700',
+    valueColor: 'text-emerald-900',
+  },
+  {
+    label: 'Rahu Kaal (Avoid)',
+    value: '03:00 PM - 04:30 PM',
+    cardBg: 'bg-rose-50',
+    borderColor: 'border-rose-200',
+    labelColor: 'text-rose-700',
+    valueColor: 'text-rose-900',
+  },
+];
+
 export default function HoroscopeSection() {
   const { selectedSign, setSelectedSign, scrollToSection, showToast } = useApp();
 
@@ -113,28 +157,19 @@ export default function HoroscopeSection() {
         id="panchangWidget"
         className="pt-2 border-t border-amberGold-100 grid grid-cols-2 md:grid-cols-4 gap-4 text-xs"
       >
-        <div className="p-3 bg-sunshine-50 rounded-xl border border-amberGold-200">
-          <span className="text-[10px] text-darkSlate-500 font-bold uppercase block">Tithi</span>
-          <span className="font-extrabold text-darkSlate-900 text-sm">Shukla Paksha Dashami</span>
-        </div>
-        <div className="p-3 bg-sunshine-50 rounded-xl border border-amberGold-200">
-          <span className="text-[10px] text-darkSlate-500 font-bold uppercase block">
-            Nakshatra
-          </span>
-          <span className="font-extrabold text-darkSlate-900 text-sm">Rohini Nakshatra</span>
-        </div>
-        <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-200">
-          <span className="text-[10px] text-emerald-700 font-bold uppercase block">
-            Abhijit Muhurat (Auspicious)
-          </span>
-          <span className="font-extrabold text-emerald-900 text-sm">11:45 AM - 12:35 PM</span>
-        </div>
-        <div className="p-3 bg-rose-50 rounded-xl border border-rose-200">
-          <span className="text-[10px] text-rose-700 font-bold uppercase block">
-            Rahu Kaal (Avoid)
-          </span>
-          <span className="font-extrabold text-rose-900 text-sm">03:00 PM - 04:30 PM</span>
-        </div>
+        {PANCHANG_ITEMS.map((item) => (
+          <div
+            key={item.label}
+            className={`p-3 ${item.cardBg} rounded-xl border ${item.borderColor}`}
+          >
+            <span className={`text-[10px] ${item.labelColor} font-bold uppercase block`}>
+              {item.label}
+            </span>
+            <span className={`font-extrabold ${item.valueColor} text-sm`}>
+              {item.value}
+            </span>
+          </div>
+        ))}
       </div>
     </section>
   );
