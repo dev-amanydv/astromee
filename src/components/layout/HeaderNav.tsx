@@ -1,6 +1,8 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
+import { useRouter, usePathname } from 'next/navigation';
 import { useApp } from '@/context/AppContext';
 import { ZODIAC_SIGNS, ZodiacSign } from '@/data/horoscope';
 
@@ -54,23 +56,33 @@ const SCANNER_MODES = [
 ];
 
 export default function HeaderNav() {
+  const router = useRouter();
+  const pathname = usePathname();
   const { scrollToSection, setScanMode, setSelectedSign } = useApp();
+
+  const navigateOrScroll = (sectionId: string) => {
+    if (pathname === '/') {
+      scrollToSection(sectionId);
+    } else {
+      router.push(`/#${sectionId}`);
+    }
+  };
 
   const handleSelectSign = (sign: ZodiacSign) => {
     setSelectedSign(sign);
-    scrollToSection('horoscopeSection');
+    navigateOrScroll('horoscopeSection');
   };
 
   const handleSelectScanner = (mode: 'palm' | 'face') => {
     setScanMode(mode);
-    scrollToSection('aiScannerSection');
+    navigateOrScroll('aiScannerSection');
   };
 
   return (
     <nav className="hidden xl:flex items-center gap-1 text-[13px] font-bold text-darkSlate-700">
       <div className="nav-item">
         <button
-          onClick={() => scrollToSection('heroSection')}
+          onClick={() => navigateOrScroll('heroSection')}
           className="nav-link-btn px-3 py-2 rounded-xl hover:text-amberGold-700 hover:bg-amberGold-50/60 transition-all flex items-center gap-1.5"
         >
           <i className="fa-solid fa-house text-amberGold-600 text-xs"></i>
@@ -79,8 +91,25 @@ export default function HeaderNav() {
       </div>
 
       <div className="nav-item">
+        <Link
+          href="/store"
+          className={`nav-link-btn px-3 py-2 rounded-xl hover:text-amberGold-700 hover:bg-amberGold-50/60 transition-all flex items-center gap-1.5 ${
+            pathname === '/store' || pathname.startsWith('/products')
+              ? 'text-amberGold-700 font-extrabold bg-amberGold-50/80'
+              : ''
+          }`}
+        >
+          <i className="fa-solid fa-gem text-amberGold-600 text-xs"></i>
+          <span>Astro Store</span>
+          <span className="bg-gradient-to-r from-amberGold-500 to-amberGold-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-wider shadow-2xs">
+            Shop
+          </span>
+        </Link>
+      </div>
+
+      <div className="nav-item">
         <button
-          onClick={() => scrollToSection('astrologersSection')}
+          onClick={() => navigateOrScroll('astrologersSection')}
           className="nav-link-btn px-3 py-2 rounded-xl hover:text-amberGold-700 hover:bg-amberGold-50/60 transition-all flex items-center gap-1.5"
         >
           <i className="fa-solid fa-headset text-amberGold-600 text-xs"></i>
@@ -93,11 +122,10 @@ export default function HeaderNav() {
             Consultation Modes
           </div>
           {CONSULTATION_MODES.map((mode) => (
-            <a
+            <button
               key={mode.title}
-              href="#astrologersSection"
-              onClick={() => scrollToSection('astrologersSection')}
-              className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-amberGold-50 transition-colors group"
+              onClick={() => navigateOrScroll('astrologersSection')}
+              className="w-full flex items-center gap-3 p-2.5 rounded-xl hover:bg-amberGold-50 transition-colors group text-left"
             >
               <div
                 className={`w-8 h-8 rounded-lg ${mode.iconBg} ${mode.iconColor} flex items-center justify-center text-sm group-hover:scale-110 transition-transform`}
@@ -108,14 +136,14 @@ export default function HeaderNav() {
                 <div className="font-bold text-darkSlate-900 text-xs">{mode.title}</div>
                 <div className="text-[10px] text-darkSlate-500 font-medium">{mode.subtitle}</div>
               </div>
-            </a>
+            </button>
           ))}
         </div>
       </div>
 
       <div className="nav-item">
         <button
-          onClick={() => scrollToSection('aiScannerSection')}
+          onClick={() => navigateOrScroll('aiScannerSection')}
           className="nav-link-btn px-3 py-2 rounded-xl hover:text-amberGold-700 hover:bg-amberGold-50/60 transition-all flex items-center gap-1.5"
         >
           <i className="fa-solid fa-microchip text-mysticLight-purple text-xs"></i>
@@ -143,7 +171,7 @@ export default function HeaderNav() {
 
       <div className="nav-item">
         <button
-          onClick={() => scrollToSection('horoscopeSection')}
+          onClick={() => navigateOrScroll('horoscopeSection')}
           className="nav-link-btn px-3 py-2 rounded-xl hover:text-amberGold-700 hover:bg-amberGold-50/60 transition-all flex items-center gap-1.5"
         >
           <i className="fa-solid fa-sun text-amberGold-500 text-xs"></i>

@@ -1,19 +1,16 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import HeaderNav from './HeaderNav';
 import HeaderActions from './HeaderActions';
 import MobileNavDrawer from './MobileNavDrawer';
 
 function BrandLogo() {
-  const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
-    <div
+    <Link
+      href="/"
       className="flex items-center gap-3 cursor-pointer select-none group"
-      onClick={handleScrollToTop}
     >
       <div className="relative w-11 h-11 rounded-2xl bg-gradient-to-tr from-amberGold-500 via-mysticLight-purple to-mysticLight-pink p-0.5 shadow-md shadow-amberGold-500/20 group-hover:scale-105 transition-all">
         <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center relative overflow-hidden">
