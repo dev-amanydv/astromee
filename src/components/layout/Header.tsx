@@ -35,7 +35,7 @@ function BrandLogo() {
           <span>Cosmic AI</span>
         </p>
       </div>
-    </div>
+    </Link>
   );
 }
 

@@ -13,6 +13,15 @@ export interface CarouselItem {
 
 export const CAROUSEL_ITEMS: CarouselItem[] = [
   {
+    id: 'store',
+    label: 'Cosmic Remedies & Mall',
+    icon: '🛍️',
+    iconGradient: 'from-amberGold-500 to-mysticLight-purple',
+    badge: 'NEW',
+    actionType: 'scroll',
+    target: 'cosmicStoreSection',
+  },
+  {
     id: 'horoscope',
     label: 'Daily Horoscope',
     icon: '♈',
