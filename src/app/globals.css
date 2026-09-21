@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Desktop Styles & Aesthetics */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #EADFCF;
+  border-radius: 999px;
+  border: 2px solid #FAF8F5;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #DBC5A6;
+}
+
+body {
+  background-color: #FAF8F5;
+  color: #0F172A;
+  font-family: var(--font-sans), 'Plus Jakarta Sans', -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #B45309 0%, #D97706 40%, #7C3AED 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+}
+
+.cosmic-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(217, 119, 6, 0.16);
+  box-shadow: 0 10px 30px -5px rgba(217, 119, 6, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cosmic-card:hover {
+  border-color: rgba(217, 119, 6, 0.38);
+  box-shadow: 0 20px 35px -8px rgba(217, 119, 6, 0.12), 0 8px 16px -4px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+}
+
+.scanner-laser {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #7C3AED, #F59E0B, #7C3AED, transparent);
+  box-shadow: 0 0 16px rgba(124, 58, 237, 0.8), 0 0 8px rgba(245, 158, 11, 0.8);
+  animation: desktopScan 2.4s infinite ease-in-out;
+}
+
+@keyframes desktopScan {
+  0% { top: 4%; opacity: 0.2; }
+  50% { top: 92%; opacity: 1; }
+  100% { top: 4%; opacity: 0.2; }
+}
+
+.subtle-grid-bg {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(217, 119, 6, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(217, 119, 6, 0.04) 1px, transparent 1px);
+}
+
+/* Nav Menu Dropdowns */
+.nav-item {
+  position: relative;
+}
+.nav-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-item:hover .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-link-btn {
+  position: relative;
+  transition: all 0.2s ease;
+}
+.nav-link-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #F59E0B, #7C3AED);
+  transition: all 0.25s ease;
+  transform: translateX(-50%);
+  border-radius: 99px;
+}
+.nav-item:hover .nav-link-btn::after, .nav-link-btn.active::after {
+  width: 80%;
+}
+
+.horoscope-chip.active {
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+  color: #FFFFFF !important;
+  border-color: #B45309;
+  box-shadow: 0 8px 16px -4px rgba(217, 119, 6, 0.35);
+  transform: translateY(-2px);
+}
+
+/* ==================== AUTO-MOVING CONTINUOUS CAROUSEL ==================== */
+@keyframes autoScrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.quick-carousel-track {
+  display: flex;
+  width: max-content;
+  animation: autoScrollMarquee 38s linear infinite;
+  will-change: transform;
+}
+
+/* Pause auto movement on hover */
+.quick-carousel-track:hover, .quick-carousel-wrapper:hover .quick-carousel-track {
+  animation-play-state: paused;
+}
+
+.carousel-fade-mask {
+  mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+}
+
+.carousel-item-pill {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.carousel-item-pill:hover {
+  transform: translateY(-2px) scale(1.04);
+  border-color: #F59E0B;
+  box-shadow: 0 8px 20px -4px rgba(217, 119, 6, 0.2);
+}
