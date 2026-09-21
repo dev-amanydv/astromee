@@ -94,7 +94,6 @@ export default function FlameCalculator() {
         </form>
       </div>
 
-      {/* Result Box */}
       {result && (
         <div
           id="flameResult"

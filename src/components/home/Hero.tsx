@@ -6,19 +6,17 @@ import { ASTROLOGERS } from '@/data/astrologers';
 
 export default function Hero() {
   const { scrollToSection, startChatConsultation } = useApp();
-  const featuredAstro = ASTROLOGERS[0]; // Acharya Ananya
+  const featuredAstro = ASTROLOGERS[0];
 
   return (
     <section
       id="heroSection"
       className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-amberGold-50/90 via-white to-mysticLight-softPurple/50 border border-amberGold-300/70 shadow-xl p-6 sm:p-10 lg:p-12"
     >
-      {/* Decorative Cosmic Gradient Orbs */}
       <div className="absolute -top-24 -right-24 w-96 h-96 bg-mysticLight-purple/15 rounded-full filter blur-3xl pointer-events-none"></div>
       <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-amberGold-400/20 rounded-full filter blur-3xl pointer-events-none"></div>
 
       <div className="relative z-10 grid lg:grid-cols-12 gap-8 items-center">
-        {/* Left Hero Content */}
         <div className="lg:col-span-7 space-y-5 text-center lg:text-left">
           <div className="inline-flex items-center gap-2 bg-white/90 border border-amberGold-300 rounded-full px-4 py-1.5 text-xs text-amberGold-800 font-bold shadow-xs">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -36,7 +34,6 @@ export default function Hero() {
             instantly via Live Chat &amp; Call with 500+ verified Vedic masters.
           </p>
 
-          {/* Hero Action Buttons */}
           <div className="pt-2 flex flex-col sm:flex-row gap-3.5 justify-center lg:justify-start">
             <button
               onClick={() => scrollToSection('astrologersSection')}
@@ -56,7 +53,6 @@ export default function Hero() {
             </button>
           </div>
 
-          {/* Trust Stats Bar */}
           <div className="pt-6 grid grid-cols-3 gap-4 border-t border-amberGold-200/80 max-w-lg mx-auto lg:mx-0">
             <div className="text-left">
               <div className="font-black text-lg text-darkSlate-900">500+</div>
@@ -79,13 +75,10 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Hero Visual / Live Spotlight Card (Desktop) */}
         <div className="lg:col-span-5 flex justify-center">
           <div className="relative w-full max-w-md">
-            {/* Spinning Celestial Astrolabe Ring */}
             <div className="absolute -inset-4 rounded-3xl border-2 border-dashed border-amberGold-300/60 animate-spin-slow pointer-events-none"></div>
 
-            {/* Featured Astrologer Live Card */}
             <div className="cosmic-card rounded-3xl p-5 border-2 border-amberGold-300 relative bg-white/95 space-y-4">
               <div className="flex items-center justify-between border-b border-amberGold-100 pb-3">
                 <div className="flex items-center gap-2">

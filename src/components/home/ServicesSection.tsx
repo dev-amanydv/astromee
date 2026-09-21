@@ -34,7 +34,6 @@ export default function ServicesSection() {
         </span>
       </div>
 
-      {/* Responsive Desktop 6-Column Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
         {SERVICES.map((service) => (
           <div

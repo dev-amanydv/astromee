@@ -15,7 +15,6 @@ export default function HeaderActions() {
 
   return (
     <div className="flex items-center gap-2 sm:gap-3">
-      {/* Coin Wallet Capsule Button */}
       <button
         onClick={() => setIsWalletModalOpen(true)}
         className="flex items-center gap-2 bg-gradient-to-r from-amberGold-50 via-amberGold-100 to-amberGold-50 hover:from-amberGold-100 hover:to-amberGold-200 border-2 border-amberGold-400 rounded-2xl px-3.5 py-1.5 hover:shadow-md active:scale-95 transition-all group shadow-2xs"
@@ -35,7 +34,6 @@ export default function HeaderActions() {
         </span>
       </button>
 
-      {/* Daily Lucky Spin Chakra Button */}
       <button
         onClick={() => setIsWheelModalOpen(true)}
         className="relative p-2.5 bg-white hover:bg-amberGold-50 active:scale-90 rounded-2xl border border-amberGold-200 text-amberGold-600 hover:text-amberGold-700 shadow-xs transition-all flex items-center gap-1.5 text-xs font-black"
@@ -49,14 +47,12 @@ export default function HeaderActions() {
         </span>
       </button>
 
-      {/* VIP User Profile Dropdown Menu */}
       <div className="relative group">
         <button className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amberGold-400 to-mysticLight-purple p-0.5 shadow-sm hover:scale-105 active:scale-95 transition-transform flex items-center justify-center">
           <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center text-darkSlate-700">
             <i className="fa-solid fa-user text-xs text-amberGold-600"></i>
           </div>
         </button>
-        {/* Profile Menu */}
         <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-2xl shadow-2xl border border-amberGold-200/80 p-3 z-50 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all space-y-2">
           <div className="border-b border-amberGold-100 pb-2 px-1">
             <div className="font-black text-darkSlate-900 text-xs">Astromee Seeker</div>
@@ -103,7 +99,6 @@ export default function HeaderActions() {
         </div>
       </div>
 
-      {/* Mobile Menu Button */}
       <button
         onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
         className="xl:hidden p-2.5 rounded-2xl bg-sunshine-100 hover:bg-sunshine-200 border border-amberGold-200 text-darkSlate-700 text-base"

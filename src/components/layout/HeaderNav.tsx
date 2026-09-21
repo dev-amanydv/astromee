@@ -68,7 +68,6 @@ export default function HeaderNav() {
 
   return (
     <nav className="hidden xl:flex items-center gap-1 text-[13px] font-bold text-darkSlate-700">
-      {/* Nav Item 1: Home */}
       <div className="nav-item">
         <button
           onClick={() => scrollToSection('heroSection')}
@@ -79,7 +78,6 @@ export default function HeaderNav() {
         </button>
       </div>
 
-      {/* Nav Item 2: Astrologers (with Mega Dropdown) */}
       <div className="nav-item">
         <button
           onClick={() => scrollToSection('astrologersSection')}
@@ -115,7 +113,6 @@ export default function HeaderNav() {
         </div>
       </div>
 
-      {/* Nav Item 3: AI Scanner (with Dropdown) */}
       <div className="nav-item">
         <button
           onClick={() => scrollToSection('aiScannerSection')}
@@ -144,7 +141,6 @@ export default function HeaderNav() {
         </div>
       </div>
 
-      {/* Nav Item 4: Horoscope (with Dropdown) */}
       <div className="nav-item">
         <button
           onClick={() => scrollToSection('horoscopeSection')}

@@ -16,7 +16,6 @@ export default function TopStatusBar() {
   return (
     <div className="bg-gradient-to-r from-amberGold-900 via-amberGold-700 to-darkSlate-900 text-white text-[11px] font-medium py-1.5 px-4 sm:px-8 border-b border-amberGold-600/30">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-        {/* Left Live Astrologers Counter */}
         <div className="flex items-center gap-2">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -29,7 +28,6 @@ export default function TopStatusBar() {
           </span>
         </div>
 
-        {/* Center Muhurat Announcement */}
         <div
           className="hidden lg:flex items-center gap-2 text-amberGold-100 cursor-pointer hover:text-white transition-colors"
           onClick={() => scrollToSection('panchangWidget')}
@@ -40,7 +38,6 @@ export default function TopStatusBar() {
           </span>
         </div>
 
-        {/* Right Quick Language & Help Links */}
         <div className="flex items-center gap-3 text-[11px]">
           <button
             onClick={() => showToast('💬 24/7 Support', 'Connected with Astromee VIP Helpdesk')}

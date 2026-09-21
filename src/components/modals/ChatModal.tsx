@@ -79,7 +79,6 @@ export default function ChatModal() {
       className="fixed inset-0 z-50 bg-darkSlate-950/60 backdrop-blur-md flex items-center justify-center p-4"
     >
       <div className="cosmic-card w-full max-w-2xl h-[620px] rounded-3xl border-2 border-amberGold-300 flex flex-col justify-between overflow-hidden bg-white shadow-2xl">
-        {/* Chat Header */}
         <div className="bg-gradient-to-r from-amberGold-50 to-white p-4 border-b border-amberGold-200 flex items-center justify-between">
           <div className="flex items-center gap-3.5">
             <img
@@ -111,7 +110,6 @@ export default function ChatModal() {
           </div>
         </div>
 
-        {/* Messages Window */}
         <div
           id="chatMessages"
           ref={chatMessagesRef}
@@ -136,7 +134,6 @@ export default function ChatModal() {
           )}
         </div>
 
-        {/* Input Bar */}
         <div className="p-3.5 bg-white border-t border-amberGold-200 flex items-center gap-3">
           <input
             type="text"

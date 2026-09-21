@@ -75,7 +75,6 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     }
   }, [toast.visible]);
 
-  // Keyboard shortcut for Cmd+K / Ctrl+K and Escape
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {

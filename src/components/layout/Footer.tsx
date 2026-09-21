@@ -56,7 +56,6 @@ export default function Footer() {
     <footer className="bg-white border-t border-amberGold-200/80 mt-16 pt-12 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-          {/* Col 1: Brand Info */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amberGold-500 to-mysticLight-purple p-0.5 shadow-sm">
@@ -87,7 +86,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Col 2: Astrological Services */}
           <div className="space-y-3 text-xs">
             <h5 className="font-bold text-darkSlate-900 uppercase tracking-wider text-[11px]">
               Astrology Tools
@@ -106,7 +104,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 3: Consultations */}
           <div className="space-y-3 text-xs">
             <h5 className="font-bold text-darkSlate-900 uppercase tracking-wider text-[11px]">
               Consultations
@@ -125,7 +122,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 4: Support & Security */}
           <div className="space-y-3 text-xs">
             <h5 className="font-bold text-darkSlate-900 uppercase tracking-wider text-[11px]">
               Trust & Support

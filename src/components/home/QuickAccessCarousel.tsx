@@ -68,7 +68,6 @@ export default function QuickAccessCarousel() {
   return (
     <section className="bg-white/90 border-b border-amberGold-200/60 py-3 px-3 sm:px-6 shadow-2xs relative overflow-hidden group/ribbon">
       <div className="max-w-7xl mx-auto flex items-center gap-3">
-        {/* Carousel Nav Left Arrow (Hover Reveal) */}
         <button
           onClick={() => nudgeCarousel('left')}
           className="hidden sm:flex z-20 w-7 h-7 rounded-full bg-white/95 border border-amberGold-300 text-amberGold-700 shadow-md items-center justify-center hover:bg-amberGold-500 hover:text-white transition-all opacity-0 group-hover/ribbon:opacity-100 -mr-2"
@@ -77,7 +76,6 @@ export default function QuickAccessCarousel() {
           <i className="fa-solid fa-chevron-left text-xs"></i>
         </button>
 
-        {/* Auto-Moving Carousel Viewport with Fade Mask */}
         <div
           id="carouselViewport"
           className="flex-1 overflow-hidden carousel-fade-mask quick-carousel-wrapper py-1"
@@ -87,14 +85,11 @@ export default function QuickAccessCarousel() {
             ref={trackRef}
             className="quick-carousel-track gap-4 items-center"
           >
-            {/* Set 1 */}
             {renderItems('set1')}
-            {/* Set 2 (Duplicate for infinite seamless loop) */}
             {renderItems('set2')}
           </div>
         </div>
 
-        {/* Carousel Nav Right Arrow (Hover Reveal) */}
         <button
           onClick={() => nudgeCarousel('right')}
           className="hidden sm:flex z-20 w-7 h-7 rounded-full bg-white/95 border border-amberGold-300 text-amberGold-700 shadow-md items-center justify-center hover:bg-amberGold-500 hover:text-white transition-all opacity-0 group-hover/ribbon:opacity-100 -ml-2"

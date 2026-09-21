@@ -87,7 +87,6 @@ export default function WalletModal() {
           </p>
         </div>
 
-        {/* Recharge Pack Options */}
         <div className="space-y-3">
           {RECHARGE_PACKS.map((pack) => (
             <div
@@ -112,7 +111,6 @@ export default function WalletModal() {
           ))}
         </div>
 
-        {/* Payment Action */}
         <div className="space-y-2">
           <button
             onClick={handleProcessPayment}

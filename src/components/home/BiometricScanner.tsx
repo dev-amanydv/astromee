@@ -10,7 +10,6 @@ export default function BiometricScanner() {
   const [progressText, setProgressText] = useState('Analyzing Biometric Lines...');
   const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
 
-  // Cleanup pending timeouts on unmount
   useEffect(() => {
     return () => {
       timeoutsRef.current.forEach(clearTimeout);
@@ -84,7 +83,6 @@ export default function BiometricScanner() {
           </p>
         </div>
 
-        {/* Mode Switcher Pill */}
         <div className="bg-sunshine-200 p-1.5 rounded-2xl border border-amberGold-200 flex gap-1.5 self-start lg:self-auto shadow-inner">
           <button
             id="scanModePalm"
@@ -111,15 +109,11 @@ export default function BiometricScanner() {
         </div>
       </div>
 
-      {/* Desktop Studio Grid */}
       <div className="grid lg:grid-cols-12 gap-8 items-center">
-        {/* Left Camera / Scanner Box */}
         <div className="lg:col-span-5 flex flex-col items-center">
           <div className="relative w-full max-w-sm h-80 rounded-3xl bg-white border-2 border-dashed border-amberGold-300 flex flex-col items-center justify-center p-6 overflow-hidden shadow-md">
-            {/* High-Tech Animated Laser Line */}
             {isScanning && <div id="scannerLine" className="scanner-laser z-20"></div>}
 
-            {/* Scanner Viewfinder Brackets */}
             <div className="absolute inset-4 pointer-events-none border border-amberGold-200/60 rounded-2xl flex flex-col justify-between p-2">
               <div className="flex justify-between">
                 <div className="w-4 h-4 border-t-2 border-l-2 border-amberGold-500"></div>
@@ -131,7 +125,6 @@ export default function BiometricScanner() {
               </div>
             </div>
 
-            {/* Default View */}
             <div id="scannerPlaceholder" className="text-center space-y-3 z-10">
               <div className="w-20 h-20 mx-auto rounded-3xl bg-amberGold-50 border-2 border-amberGold-200 flex items-center justify-center text-3xl text-amberGold-600 shadow-sm animate-bounce-subtle">
                 <i
@@ -159,7 +152,6 @@ export default function BiometricScanner() {
               </label>
             </div>
 
-            {/* Scanning State Progress */}
             {isScanning && (
               <div
                 id="scanProgressBox"
@@ -196,7 +188,6 @@ export default function BiometricScanner() {
           </button>
         </div>
 
-        {/* Right Results & Insights Studio */}
         <div className="lg:col-span-7 bg-white rounded-3xl p-6 border border-amberGold-200 shadow-sm space-y-4">
           <div className="flex items-center justify-between border-b border-amberGold-100 pb-3">
             <div className="flex items-center gap-2">
@@ -237,7 +228,6 @@ export default function BiometricScanner() {
               </div>
             </div>
 
-            {/* Locked Premium Paywall Box */}
             <div className="relative p-5 rounded-2xl bg-gradient-to-r from-sunshine-100 to-amberGold-50 border-2 border-amberGold-300 overflow-hidden text-center space-y-2">
               <div className="filter blur-xs select-none text-[11px] text-darkSlate-400 space-y-1">
                 <p>🔒 Marriage Timing &amp; Spouse First Initial: [CONFIDENTIAL VEDIC DATA]</p>

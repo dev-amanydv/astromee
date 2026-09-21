@@ -42,7 +42,6 @@ export default function AstrologersSection() {
           </p>
         </div>
 
-        {/* Category Filter Tabs */}
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
           {CATEGORY_TABS.map((tab) => {
             const isActive = activeCategory === tab.id;
@@ -63,7 +62,6 @@ export default function AstrologersSection() {
         </div>
       </div>
 
-      {/* Astrologer Cards Grid (3 Columns on Desktop) */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredAstrologers.map((astro) => (
           <AstrologerCard

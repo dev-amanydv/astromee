@@ -76,7 +76,6 @@ export default function HoroscopeSection() {
         </div>
       </div>
 
-      {/* Desktop 12 Zodiac Selector Grid */}
       <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-2.5 text-center">
         {ZODIAC_SIGNS.map((sign) => {
           const isActive = selectedSign.name === sign.name;
@@ -97,7 +96,6 @@ export default function HoroscopeSection() {
         })}
       </div>
 
-      {/* Active Selected Horoscope Detail Studio Card */}
       <div className="bg-gradient-to-r from-amberGold-50/80 via-white to-sunshine-100 rounded-2xl p-6 border border-amberGold-300 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 shadow-xs">
         <div className="space-y-3 flex-1">
           <div className="flex items-center gap-3">
@@ -152,7 +150,6 @@ export default function HoroscopeSection() {
         </div>
       </div>
 
-      {/* Panchang & Auspicious Muhurat Strip */}
       <div
         id="panchangWidget"
         className="pt-2 border-t border-amberGold-100 grid grid-cols-2 md:grid-cols-4 gap-4 text-xs"
