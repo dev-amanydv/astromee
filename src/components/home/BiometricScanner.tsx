@@ -93,7 +93,7 @@ export default function BiometricScanner() {
   return (
     <section
       id="aiScannerSection"
-      className="cosmic-card rounded-3xl p-6 sm:p-8 lg:p-10 border-2 border-mysticLight-purple/30 relative overflow-hidden bg-gradient-to-br from-white via-sunshine-50 to-mysticLight-softPurple/30"
+      className="cosmic-card rounded-3xl p-4 sm:p-8 lg:p-10 border-2 border-mysticLight-purple/30 relative overflow-hidden bg-gradient-to-br from-white via-sunshine-50 to-mysticLight-softPurple/30"
     >
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
         <div>
@@ -101,7 +101,7 @@ export default function BiometricScanner() {
             <i className="fa-solid fa-microchip"></i>
             <span>AI Biometric Destiny Engine v2.4</span>
           </div>
-          <h3 className="font-serif text-2xl sm:text-3xl font-black text-darkSlate-900">
+          <h3 className="font-serif text-xl sm:text-3xl font-black text-darkSlate-900">
             Palm &amp; Face <span className="gold-gradient-text">Destiny Scanner</span>
           </h3>
           <p className="text-xs sm:text-sm text-darkSlate-600 font-medium mt-1">
@@ -110,11 +110,11 @@ export default function BiometricScanner() {
           </p>
         </div>
 
-        <div className="bg-sunshine-200 p-1.5 rounded-2xl border border-amberGold-200 flex gap-1.5 self-start lg:self-auto shadow-inner">
+        <div className="bg-sunshine-200 p-1 sm:p-1.5 rounded-2xl border border-amberGold-200 flex gap-1 sm:gap-1.5 w-full sm:w-auto self-start lg:self-auto shadow-inner">
           <button
             id="scanModePalm"
             onClick={() => setScanMode('palm')}
-            className={`px-5 py-2 rounded-xl text-xs font-black transition-all ${
+            className={`flex-1 sm:flex-initial px-3 sm:px-5 py-2 rounded-xl text-xs font-black transition-all text-center ${
               scanMode === 'palm'
                 ? 'bg-amberGold-500 text-white shadow-xs'
                 : 'text-darkSlate-600 hover:text-amberGold-700'
@@ -125,7 +125,7 @@ export default function BiometricScanner() {
           <button
             id="scanModeFace"
             onClick={() => setScanMode('face')}
-            className={`px-5 py-2 rounded-xl text-xs font-black transition-all ${
+            className={`flex-1 sm:flex-initial px-3 sm:px-5 py-2 rounded-xl text-xs font-black transition-all text-center ${
               scanMode === 'face'
                 ? 'bg-amberGold-500 text-white shadow-xs'
                 : 'text-darkSlate-600 hover:text-amberGold-700'
@@ -136,9 +136,9 @@ export default function BiometricScanner() {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-12 gap-8 items-center">
+      <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
         <div className="lg:col-span-5 flex flex-col items-center">
-          <div className="relative w-full max-w-sm h-80 rounded-3xl bg-white border-2 border-dashed border-amberGold-300 flex flex-col items-center justify-center p-6 overflow-hidden shadow-md">
+          <div className="relative w-full max-w-sm h-72 sm:h-80 rounded-3xl bg-white border-2 border-dashed border-amberGold-300 flex flex-col items-center justify-center p-4 sm:p-6 overflow-hidden shadow-md">
             {isScanning && <div id="scannerLine" className="scanner-laser z-20"></div>}
 
             <div className="absolute inset-4 pointer-events-none border border-amberGold-200/60 rounded-2xl flex flex-col justify-between p-2">
@@ -215,7 +215,7 @@ export default function BiometricScanner() {
           </button>
         </div>
 
-        <div className="lg:col-span-7 bg-white rounded-3xl p-6 border border-amberGold-200 shadow-sm space-y-4">
+        <div className="lg:col-span-7 bg-white rounded-3xl p-4 sm:p-6 border border-amberGold-200 shadow-sm space-y-4">
           <div className="flex items-center justify-between border-b border-amberGold-100 pb-3">
             <div className="flex items-center gap-2">
               <i className="fa-solid fa-square-poll-vertical text-amberGold-600"></i>

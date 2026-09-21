@@ -97,7 +97,7 @@ export default function SpotlightModal() {
   return (
     <div
       id="spotlightModal"
-      className="fixed inset-0 z-50 bg-darkSlate-950/60 backdrop-blur-md flex items-start justify-center pt-20 p-4"
+      className="fixed inset-0 z-50 bg-darkSlate-950/60 backdrop-blur-md flex items-start justify-center pt-10 sm:pt-20 p-3 sm:p-4"
     >
       <div className="cosmic-card w-full max-w-xl rounded-3xl p-4 sm:p-6 border-2 border-amberGold-300 bg-white shadow-2xl space-y-4">
         <div className="relative">

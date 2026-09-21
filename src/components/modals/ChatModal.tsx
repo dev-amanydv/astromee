@@ -77,36 +77,37 @@ export default function ChatModal() {
   return (
     <div
       id="chatModal"
-      className="fixed inset-0 z-50 bg-darkSlate-950/60 backdrop-blur-md flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 bg-darkSlate-950/60 backdrop-blur-md flex items-center justify-center p-2.5 sm:p-4"
     >
-      <div className="cosmic-card w-full max-w-2xl h-[620px] rounded-3xl border-2 border-amberGold-300 flex flex-col justify-between overflow-hidden bg-white shadow-2xl">
-        <div className="bg-gradient-to-r from-amberGold-50 to-white p-4 border-b border-amberGold-200 flex items-center justify-between">
-          <div className="flex items-center gap-3.5">
+      <div className="cosmic-card w-full max-w-2xl h-[90vh] sm:h-[620px] max-h-[95vh] rounded-3xl border-2 border-amberGold-300 flex flex-col justify-between overflow-hidden bg-white shadow-2xl">
+        <div className="bg-gradient-to-r from-amberGold-50 to-white p-3 sm:p-4 border-b border-amberGold-200 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
             <img
               id="chatAstroImg"
               src={activeChatAstro.image}
               alt={activeChatAstro.name}
-              className="w-12 h-12 rounded-2xl object-cover border-2 border-amberGold-400 shadow-xs"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl object-cover border-2 border-amberGold-400 shadow-xs shrink-0"
             />
-            <div>
-              <h4 id="chatAstroName" className="font-serif font-bold text-sm text-darkSlate-900">
+            <div className="min-w-0">
+              <h4 id="chatAstroName" className="font-serif font-bold text-sm text-darkSlate-900 truncate">
                 {activeChatAstro.name}
               </h4>
-              <p className="text-[11px] text-emerald-700 font-bold flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-                <span>Live Secure Consultation Connected</span>
+              <p className="text-[10px] sm:text-[11px] text-emerald-700 font-bold flex items-center gap-1.5 truncate">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping shrink-0"></span>
+                <span className="hidden sm:inline">Live Secure Consultation Connected</span>
+                <span className="sm:hidden">Live Connected</span>
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="bg-white px-3 py-1 rounded-full text-xs text-amberGold-800 font-black border border-amberGold-300 shadow-xs">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            <div className="bg-white px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs text-amberGold-800 font-black border border-amberGold-300 shadow-xs">
               ⏱️ <span id="chatTimer">{formatTimer(timeLeft)}</span>
             </div>
             <button
               onClick={closeChatModal}
-              className="text-darkSlate-400 hover:text-darkSlate-800 p-2 rounded-full hover:bg-sunshine-100"
+              className="text-darkSlate-400 hover:text-darkSlate-800 p-1.5 sm:p-2 rounded-full hover:bg-sunshine-100"
             >
-              <i className="fa-solid fa-xmark text-lg"></i>
+              <i className="fa-solid fa-xmark text-base sm:text-lg"></i>
             </button>
           </div>
         </div>

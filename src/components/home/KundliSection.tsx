@@ -21,7 +21,7 @@ export default function KundliSection() {
   return (
     <section
       id="kundliSection"
-      className="cosmic-card rounded-3xl p-6 sm:p-8 border border-emerald-200 bg-white space-y-4 flex flex-col justify-between"
+      className="cosmic-card rounded-3xl p-4 sm:p-8 border border-emerald-200 bg-white space-y-4 flex flex-col justify-between"
     >
       <div>
         <div className="flex items-center justify-between mb-4">
@@ -44,7 +44,7 @@ export default function KundliSection() {
         </div>
 
         <form onSubmit={generateKundli} className="space-y-3">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
             <div>
               <label className="text-xs text-darkSlate-700 font-bold block mb-1">Full Name</label>
               <input
@@ -70,7 +70,7 @@ export default function KundliSection() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
             <div>
               <label className="text-xs text-darkSlate-700 font-bold block mb-1">Birth Date</label>
               <input

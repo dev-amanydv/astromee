@@ -33,23 +33,23 @@ export default function AstrologersSection() {
     <section id="astrologersSection" className="space-y-4">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
         <div>
-          <h3 className="font-serif text-2xl font-bold text-darkSlate-900 flex items-center gap-2">
-            <i className="fa-solid fa-headset text-amberGold-500"></i>
+          <h3 className="font-serif text-xl sm:text-2xl font-bold text-darkSlate-900 flex items-center gap-2">
+            <i className="fa-solid fa-headset text-amberGold-500 text-base sm:text-xl"></i>
             <span>Consult Top Astrologers Online</span>
           </h3>
-          <p className="text-xs text-darkSlate-600 font-medium">
+          <p className="text-xs text-darkSlate-600 font-medium mt-0.5">
             Instant guidance on Marriage, Love, Career &amp; Planetary Doshas
           </p>
         </div>
 
-        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+        <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-1 -mx-3 px-3 sm:mx-0 sm:px-0">
           {CATEGORY_TABS.map((tab) => {
             const isActive = activeCategory === tab.id;
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveCategory(tab.id)}
-                className={`px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${
+                className={`px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors shrink-0 ${
                   isActive
                     ? 'bg-amberGold-500 text-white shadow-xs'
                     : 'bg-white text-darkSlate-700 border border-amberGold-200 hover:bg-amberGold-50'
@@ -62,7 +62,7 @@ export default function AstrologersSection() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
         {filteredAstrologers.map((astro) => (
           <AstrologerCard
             key={astro.id}

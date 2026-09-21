@@ -15,7 +15,7 @@ export default function ProductReviewsList({
   const averageRating = rating ? rating.toFixed(1) : '4.8';
 
   return (
-    <section className="cosmic-card rounded-3xl p-6 sm:p-8 border border-amberGold-200/80 space-y-6">
+    <section className="cosmic-card rounded-3xl p-4 sm:p-8 border border-amberGold-200/80 space-y-6">
       <div className="flex items-center justify-between border-b border-amberGold-100 pb-4">
         <div>
           <h3 className="font-serif text-xl sm:text-2xl font-bold text-darkSlate-900">

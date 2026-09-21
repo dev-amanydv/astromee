@@ -31,9 +31,9 @@ export default function StoreFilterBar({
   const hasActiveFilters = activeSearch !== '' || selectedCategory !== 'all';
 
   return (
-    <section className="cosmic-card rounded-2xl p-4 sm:p-5 border border-amberGold-200/80 space-y-4">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <form onSubmit={onSearchSubmit} className="relative flex-1 max-w-md">
+    <section className="cosmic-card rounded-2xl p-3.5 sm:p-5 border border-amberGold-200/80 space-y-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4">
+        <form onSubmit={onSearchSubmit} className="relative w-full md:flex-1 md:max-w-md">
           <input
             type="text"
             value={searchQuery}
@@ -63,7 +63,7 @@ export default function StoreFilterBar({
           </div>
         </form>
 
-        <div className="flex items-center gap-2 text-xs font-bold text-darkSlate-700 self-end md:self-auto">
+        <div className="flex items-center justify-between md:justify-start gap-2 text-xs font-bold text-darkSlate-700 w-full md:w-auto">
           <label htmlFor="sortSelect" className="text-darkSlate-500 whitespace-nowrap">
             Sort By:
           </label>
@@ -71,7 +71,7 @@ export default function StoreFilterBar({
             id="sortSelect"
             value={sortBy}
             onChange={(e) => onSortByChange(e.target.value)}
-            className="px-3 py-2 rounded-xl bg-sunshine-50 border border-amberGold-200 text-darkSlate-800 text-xs font-bold focus:border-amberGold-500 focus:outline-none cursor-pointer"
+            className="flex-1 md:flex-initial px-3 py-2 rounded-xl bg-sunshine-50 border border-amberGold-200 text-darkSlate-800 text-xs font-bold focus:border-amberGold-500 focus:outline-none cursor-pointer"
           >
             <option value="featured">Featured Remedies</option>
             <option value="rating-desc">Highest Rated</option>
@@ -81,7 +81,7 @@ export default function StoreFilterBar({
         </div>
       </div>
 
-      <div className="flex items-center gap-2 overflow-x-auto pb-1 pt-1 no-scrollbar text-xs">
+      <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 pt-1 no-scrollbar text-xs -mx-3.5 px-3.5 sm:mx-0 sm:px-0">
         <button
           onClick={() => onSelectCategory('all')}
           className={`px-3.5 py-1.5 rounded-full font-bold whitespace-nowrap transition-all ${
@@ -109,7 +109,7 @@ export default function StoreFilterBar({
       </div>
 
       {hasActiveFilters && (
-        <div className="flex items-center gap-2 pt-2 border-t border-amberGold-100 text-xs text-darkSlate-600">
+        <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-amberGold-100 text-xs text-darkSlate-600">
           <span className="font-semibold">Active filters:</span>
           {selectedCategory !== 'all' && (
             <span className="px-2 py-0.5 rounded-md bg-amberGold-100 text-amberGold-800 font-bold capitalize flex items-center gap-1">

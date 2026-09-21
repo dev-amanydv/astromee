@@ -18,8 +18,8 @@ export default function ServicesSection() {
     <section id="servicesGrid" className="space-y-4">
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
         <div>
-          <h3 className="font-serif text-2xl font-bold text-darkSlate-900 flex items-center gap-2">
-            <i className="fa-solid fa-wand-magic-sparkles text-amberGold-500 text-lg"></i>
+          <h3 className="font-serif text-xl sm:text-2xl font-bold text-darkSlate-900 flex items-center gap-2">
+            <i className="fa-solid fa-wand-magic-sparkles text-amberGold-500 text-base sm:text-lg"></i>
             <span>Explore Astromee Services</span>
           </h3>
           <p className="text-xs text-darkSlate-600 font-medium mt-0.5">
@@ -27,19 +27,19 @@ export default function ServicesSection() {
           </p>
         </div>
         <span
-          className="text-xs text-amberGold-700 font-bold hover:underline cursor-pointer flex items-center gap-1"
+          className="text-xs text-amberGold-700 font-bold hover:underline cursor-pointer flex items-center gap-1 self-start sm:self-auto"
           onClick={() => scrollToSection('astrologersSection')}
         >
           View All Services <i className="fa-solid fa-arrow-right text-[10px]"></i>
         </span>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3.5">
         {SERVICES.map((service) => (
           <div
             key={service.id}
             onClick={() => handleServiceClick(service)}
-            className="cosmic-card rounded-2xl p-4 text-center cursor-pointer relative overflow-hidden group"
+            className="cosmic-card rounded-2xl p-3 sm:p-4 text-center cursor-pointer relative overflow-hidden group"
           >
             {service.badge && (
               <div
@@ -49,7 +49,7 @@ export default function ServicesSection() {
               </div>
             )}
             <div
-              className={`w-12 h-12 mx-auto mb-2.5 rounded-2xl ${service.iconBg} border ${service.iconBorder} flex items-center justify-center ${service.iconColor} text-xl shadow-xs group-hover:scale-110 transition-transform`}
+              className={`w-11 h-11 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-2.5 rounded-2xl ${service.iconBg} border ${service.iconBorder} flex items-center justify-center ${service.iconColor} text-lg sm:text-xl shadow-xs group-hover:scale-110 transition-transform`}
             >
               <i className={service.icon}></i>
             </div>

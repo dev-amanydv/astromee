@@ -28,9 +28,9 @@ export default function WheelModal() {
   return (
     <div
       id="wheelModal"
-      className="fixed inset-0 z-50 bg-darkSlate-950/60 backdrop-blur-md flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 bg-darkSlate-950/60 backdrop-blur-md flex items-center justify-center p-3 sm:p-4"
     >
-      <div className="cosmic-card w-full max-w-sm rounded-3xl p-6 border-2 border-amberGold-300 text-center space-y-4 relative bg-white shadow-2xl">
+      <div className="cosmic-card w-full max-w-sm rounded-3xl p-4 sm:p-6 border-2 border-amberGold-300 text-center space-y-4 relative bg-white shadow-2xl">
         <button
           onClick={() => setIsWheelModalOpen(false)}
           className="absolute top-4 right-4 text-darkSlate-400 hover:text-darkSlate-800 p-2 rounded-full"

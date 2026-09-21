@@ -8,26 +8,26 @@ function BrandLogo() {
   return (
     <Link
       href="/"
-      className="flex items-center gap-3 cursor-pointer select-none group"
+      className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none group shrink-0"
     >
-      <div className="relative w-11 h-11 rounded-2xl bg-gradient-to-tr from-amberGold-500 via-mysticLight-purple to-mysticLight-pink p-0.5 shadow-md shadow-amberGold-500/20 group-hover:scale-105 transition-all">
-        <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center relative overflow-hidden">
+      <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-amberGold-500 via-mysticLight-purple to-mysticLight-pink p-0.5 shadow-md shadow-amberGold-500/20 group-hover:scale-105 transition-all">
+        <div className="w-full h-full bg-white rounded-[10px] sm:rounded-[14px] flex items-center justify-center relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-tr from-amberGold-50 to-transparent opacity-80"></div>
-          <span className="font-serif font-black text-amberGold-600 text-2xl relative z-10">
+          <span className="font-serif font-black text-amberGold-600 text-lg sm:text-2xl relative z-10">
             A
           </span>
         </div>
       </div>
       <div>
         <div className="flex items-center gap-1.5">
-          <h1 className="font-serif font-black text-2xl tracking-wide gold-gradient-text leading-none">
+          <h1 className="font-serif font-black text-xl sm:text-2xl tracking-wide gold-gradient-text leading-none">
             Astromee
           </h1>
           <span className="bg-gradient-to-r from-amberGold-500 to-amberGold-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-wider shadow-2xs">
             PRO
           </span>
         </div>
-        <p className="text-[10px] text-darkSlate-500 font-bold tracking-widest uppercase mt-0.5 flex items-center gap-1">
+        <p className="text-[8.5px] sm:text-[10px] text-darkSlate-500 font-bold tracking-tight sm:tracking-widest uppercase mt-0.5 flex items-center gap-1">
           <span>Vedic Astrology</span>
           <span className="text-amberGold-500">✦</span>
           <span>Cosmic AI</span>
@@ -40,7 +40,7 @@ function BrandLogo() {
 export default function Header() {
   return (
     <header className="bg-white/95 backdrop-blur-2xl border-b border-amberGold-200/80 shadow-sm transition-all duration-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3 lg:gap-6">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-3 lg:gap-6">
         <BrandLogo />
         <HeaderNav />
         <HeaderActions />

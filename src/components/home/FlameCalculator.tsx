@@ -40,7 +40,7 @@ export default function FlameCalculator() {
   return (
     <section
       id="flameSection"
-      className="cosmic-card rounded-3xl p-6 sm:p-8 border border-rose-200 bg-white space-y-4 flex flex-col justify-between"
+      className="cosmic-card rounded-3xl p-4 sm:p-8 border border-rose-200 bg-white space-y-4 flex flex-col justify-between"
     >
       <div>
         <div className="flex items-center justify-between mb-4">

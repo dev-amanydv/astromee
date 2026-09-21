@@ -14,14 +14,17 @@ export default function TopStatusBar() {
   };
 
   return (
-    <div className="bg-gradient-to-r from-amberGold-900 via-amberGold-700 to-darkSlate-900 text-white text-[11px] font-medium py-1.5 px-4 sm:px-8 border-b border-amberGold-600/30">
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-        <div className="flex items-center gap-2">
-          <span className="relative flex h-2 w-2">
+    <div className="bg-gradient-to-r from-amberGold-900 via-amberGold-700 to-darkSlate-900 text-white text-[11px] font-medium py-1.5 px-3 sm:px-8 border-b border-amberGold-600/30">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
+        <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+          <span className="relative flex h-2 w-2 shrink-0">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
           </span>
-          <span className="font-bold text-amberGold-200">520+ Vedic Astrologers Online</span>
+          <span className="font-bold text-amberGold-200 truncate text-[10px] sm:text-[11px]">
+            <span className="hidden sm:inline">520+ Vedic Astrologers Online</span>
+            <span className="sm:hidden">520+ Astrologers</span>
+          </span>
           <span className="hidden md:inline text-amberGold-400/60">•</span>
           <span className="hidden md:inline text-white/90">
             First Consultation at just <strong>₹1/Min</strong>
@@ -38,7 +41,7 @@ export default function TopStatusBar() {
           </span>
         </div>
 
-        <div className="flex items-center gap-3 text-[11px]">
+        <div className="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] shrink-0">
           <button
             onClick={() => showToast('💬 24/7 Support', 'Connected with Astromee VIP Helpdesk')}
             className="hover:text-amberGold-300 transition-colors flex items-center gap-1 font-semibold"

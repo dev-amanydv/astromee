@@ -26,17 +26,17 @@ export default function ProductDetailsInfo({
   const stockCount = product.stock || 25;
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center gap-2">
-        <span className="px-3 py-1 rounded-full bg-amberGold-100 text-amberGold-800 text-xs font-black uppercase tracking-wider border border-amberGold-200">
+    <div className="space-y-5 sm:space-y-6">
+      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+        <span className="px-2.5 sm:px-3 py-1 rounded-full bg-amberGold-100 text-amberGold-800 text-[11px] sm:text-xs font-black uppercase tracking-wider border border-amberGold-200">
           {formattedCategory}
         </span>
         {product.brand && (
-          <span className="px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-bold border border-purple-200">
+          <span className="px-2.5 sm:px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-[11px] sm:text-xs font-bold border border-purple-200">
             Brand: {product.brand}
           </span>
         )}
-        <span className="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-black uppercase tracking-wider">
+        <span className="px-2 sm:px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] sm:text-[11px] font-black uppercase tracking-wider">
           ✦ Vedic Certified
         </span>
       </div>
@@ -45,15 +45,15 @@ export default function ProductDetailsInfo({
         {product.title}
       </h1>
 
-      <div className="flex items-center gap-3">
+      <div className="flex flex-wrap items-center gap-2 sm:gap-3">
         <div className="flex items-center gap-1 bg-amberGold-500 text-white text-xs font-black px-2.5 py-1 rounded-lg shadow-2xs">
           <span>{ratingText}</span>
           <i className="fa-solid fa-star text-[10px]"></i>
         </div>
         <span className="text-xs text-darkSlate-600 font-semibold">
-          Based on {reviewCount} verified buyer ratings
+          Based on {reviewCount} ratings
         </span>
-        <span className="text-amberGold-400">•</span>
+        <span className="hidden sm:inline text-amberGold-400">•</span>
         <span className="text-xs text-emerald-700 font-bold flex items-center gap-1">
           <i className="fa-solid fa-check-circle"></i> In Stock ({stockCount} units)
         </span>

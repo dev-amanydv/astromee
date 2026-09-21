@@ -62,9 +62,9 @@ export default function Footer() {
   const { navigateTo } = useSectionNavigation();
 
   return (
-    <footer className="bg-white border-t border-amberGold-200/80 mt-16 pt-12 pb-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+    <footer className="bg-white border-t border-amberGold-200/80 mt-10 sm:mt-16 pt-8 sm:pt-12 pb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8">
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amberGold-500 to-mysticLight-purple p-0.5 shadow-sm">
@@ -150,7 +150,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-amberGold-200/60 flex flex-col sm:flex-row items-center justify-between text-xs text-darkSlate-500 font-medium gap-4">
+        <div className="pt-6 sm:pt-8 border-t border-amberGold-200/60 flex flex-col sm:flex-row items-center justify-between text-xs text-darkSlate-500 font-medium gap-3 sm:gap-4 text-center sm:text-left">
           <div>
             © 2026 Astromee.com. All rights reserved. Empowering cosmic discovery.
           </div>

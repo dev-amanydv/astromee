@@ -34,7 +34,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const reviewCount = product.reviews?.length || ((product.id * 7) % 50 + 5);
 
   return (
-    <div className="cosmic-card rounded-2xl p-3.5 sm:p-4 flex flex-col justify-between group relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amberGold-500/10">
+    <div className="cosmic-card rounded-2xl p-3 sm:p-4 flex flex-col justify-between group relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amberGold-500/10">
       <div className="flex items-center justify-between gap-2 mb-2 z-10">
         <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-amberGold-100 text-amberGold-800 border border-amberGold-200/80">
           {formattedCategory}
@@ -128,7 +128,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
           <Link
             href={`/products/${product.id}`}
-            className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-amberGold-500 to-amberGold-600 hover:from-amberGold-600 hover:to-amberGold-700 text-white font-bold text-xs shadow-xs hover:shadow-md transition-all active:scale-95 flex items-center gap-1"
+            className="px-2.5 sm:px-3 py-1.5 rounded-xl bg-gradient-to-r from-amberGold-500 to-amberGold-600 hover:from-amberGold-600 hover:to-amberGold-700 text-white font-bold text-xs shadow-xs hover:shadow-md transition-all active:scale-95 flex items-center gap-1 shrink-0"
           >
             <span>View</span>
             <i className="fa-solid fa-chevron-right text-[9px]"></i>

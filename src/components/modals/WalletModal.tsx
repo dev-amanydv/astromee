@@ -64,9 +64,9 @@ export default function WalletModal() {
   return (
     <div
       id="walletModal"
-      className="fixed inset-0 z-50 bg-darkSlate-950/60 backdrop-blur-md flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 bg-darkSlate-950/60 backdrop-blur-md flex items-center justify-center p-3 sm:p-4"
     >
-      <div className="cosmic-card w-full max-w-lg rounded-3xl p-6 sm:p-8 border-2 border-amberGold-300 relative bg-white space-y-6 max-h-[92vh] overflow-y-auto shadow-2xl">
+      <div className="cosmic-card w-full max-w-lg rounded-3xl p-4 sm:p-8 border-2 border-amberGold-300 relative bg-white space-y-4 sm:space-y-6 max-h-[92vh] overflow-y-auto shadow-2xl">
         <button
           onClick={() => setIsWalletModalOpen(false)}
           className="absolute top-5 right-5 text-darkSlate-400 hover:text-darkSlate-800 p-2 rounded-full hover:bg-sunshine-100 transition-colors"

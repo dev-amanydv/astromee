@@ -62,7 +62,7 @@ export default function FeaturedProductsSection() {
               Vedic Remedies & Healing
             </span>
           </div>
-          <h3 className="font-serif text-2xl sm:text-3xl font-black text-darkSlate-900 tracking-tight flex items-center gap-2.5">
+          <h3 className="font-serif text-xl sm:text-3xl font-black text-darkSlate-900 tracking-tight flex items-center gap-2.5">
             <span>Cosmic Remedies & Sacred Store</span>
           </h3>
           <p className="text-xs sm:text-sm text-darkSlate-600 font-medium mt-1">
@@ -72,7 +72,7 @@ export default function FeaturedProductsSection() {
 
         <Link
           href="/store"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amberGold-50 hover:bg-amberGold-100 border border-amberGold-300 text-amberGold-800 text-xs font-bold transition-all group shadow-2xs self-start sm:self-auto"
+          className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl bg-amberGold-50 hover:bg-amberGold-100 border border-amberGold-300 text-amberGold-800 text-xs font-bold transition-all group shadow-2xs self-start sm:self-auto shrink-0"
         >
           <span>Explore All Products</span>
           <i className="fa-solid fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform"></i>
@@ -91,15 +91,15 @@ export default function FeaturedProductsSection() {
         <ProductGrid products={products} />
       )}
 
-      <div className="p-4 rounded-2xl bg-gradient-to-r from-sunshine-100 via-amberGold-50 to-sunshine-100 border border-amberGold-200 flex flex-wrap items-center justify-around gap-4 text-center">
+      <div className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-sunshine-100 via-amberGold-50 to-sunshine-100 border border-amberGold-200 grid grid-cols-2 lg:flex lg:flex-wrap items-center justify-around gap-3 sm:gap-4">
         {TRUST_FEATURES.map((item) => (
-          <div key={item.label} className="flex items-center gap-2 text-xs font-bold text-darkSlate-800">
+          <div key={item.label} className="flex items-center gap-2 text-[11px] sm:text-xs font-bold text-darkSlate-800">
             <span
-              className={`w-8 h-8 rounded-xl ${item.bg} ${item.color} flex items-center justify-center text-sm shadow-2xs`}
+              className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl ${item.bg} ${item.color} flex items-center justify-center text-xs sm:text-sm shadow-2xs shrink-0`}
             >
               {item.icon}
             </span>
-            <span>{item.label}</span>
+            <span className="truncate">{item.label}</span>
           </div>
         ))}
       </div>
