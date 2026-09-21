@@ -50,7 +50,7 @@ export default function FeaturedProductsSection() {
   }, [loadFeaturedProducts]);
 
   return (
-    <section id="cosmicStoreSection" className="space-y-6 pt-4">
+    <section id="cosmicStoreSection" className="space-y-6 pt-4 w-full max-w-full min-w-0">
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-amberGold-200/80 pb-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
@@ -91,7 +91,7 @@ export default function FeaturedProductsSection() {
         <ProductGrid products={products} />
       )}
 
-      <div className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-sunshine-100 via-amberGold-50 to-sunshine-100 border border-amberGold-200 grid grid-cols-2 lg:flex lg:flex-wrap items-center justify-around gap-3 sm:gap-4">
+      <div className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-sunshine-100 via-amberGold-50 to-sunshine-100 border border-amberGold-200 grid grid-cols-2 lg:flex lg:flex-wrap items-center justify-around gap-3 sm:gap-4 w-full min-w-0">
         {TRUST_FEATURES.map((item) => (
           <div key={item.label} className="flex items-center gap-2 text-[11px] sm:text-xs font-bold text-darkSlate-800">
             <span

@@ -30,8 +30,8 @@ export default function AstrologersSection() {
       : ASTROLOGERS.filter((a) => a.category === activeCategory || activeCategory === 'career');
 
   return (
-    <section id="astrologersSection" className="space-y-4">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
+    <section id="astrologersSection" className="space-y-4 w-full max-w-full min-w-0">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 w-full min-w-0">
         <div>
           <h3 className="font-serif text-xl sm:text-2xl font-bold text-darkSlate-900 flex items-center gap-2">
             <i className="fa-solid fa-headset text-amberGold-500 text-base sm:text-xl"></i>
@@ -42,7 +42,7 @@ export default function AstrologersSection() {
           </p>
         </div>
 
-        <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-1 -mx-3 px-3 sm:mx-0 sm:px-0">
+        <div className="w-full md:w-auto max-w-full min-w-0 flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-1 -mx-3 px-3 sm:mx-0 sm:px-0">
           {CATEGORY_TABS.map((tab) => {
             const isActive = activeCategory === tab.id;
             return (

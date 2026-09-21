@@ -21,7 +21,7 @@ export default function KundliSection() {
   return (
     <section
       id="kundliSection"
-      className="cosmic-card rounded-3xl p-4 sm:p-8 border border-emerald-200 bg-white space-y-4 flex flex-col justify-between"
+      className="cosmic-card rounded-3xl p-4 sm:p-8 border border-emerald-200 bg-white space-y-4 flex flex-col justify-between w-full max-w-full min-w-0"
     >
       <div>
         <div className="flex items-center justify-between mb-4">

@@ -8,26 +8,26 @@ function BrandLogo() {
   return (
     <Link
       href="/"
-      className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none group shrink-0"
+      className="flex items-center gap-1.5 sm:gap-3 cursor-pointer select-none group shrink-0 min-w-0"
     >
-      <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-amberGold-500 via-mysticLight-purple to-mysticLight-pink p-0.5 shadow-md shadow-amberGold-500/20 group-hover:scale-105 transition-all">
+      <div className="relative w-8 h-8 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-amberGold-500 via-mysticLight-purple to-mysticLight-pink p-0.5 shadow-md shadow-amberGold-500/20 group-hover:scale-105 transition-all shrink-0">
         <div className="w-full h-full bg-white rounded-[10px] sm:rounded-[14px] flex items-center justify-center relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-tr from-amberGold-50 to-transparent opacity-80"></div>
-          <span className="font-serif font-black text-amberGold-600 text-lg sm:text-2xl relative z-10">
+          <span className="font-serif font-black text-amberGold-600 text-base sm:text-2xl relative z-10">
             A
           </span>
         </div>
       </div>
-      <div>
-        <div className="flex items-center gap-1.5">
-          <h1 className="font-serif font-black text-xl sm:text-2xl tracking-wide gold-gradient-text leading-none">
+      <div className="min-w-0">
+        <div className="flex items-center gap-1 sm:gap-1.5">
+          <h1 className="font-serif font-black text-lg sm:text-2xl tracking-wide gold-gradient-text leading-none">
             Astromee
           </h1>
-          <span className="bg-gradient-to-r from-amberGold-500 to-amberGold-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-wider shadow-2xs">
+          <span className="bg-gradient-to-r from-amberGold-500 to-amberGold-600 text-white text-[8px] sm:text-[9px] font-black px-1 sm:px-1.5 py-0.5 rounded-full uppercase tracking-wider shadow-2xs">
             PRO
           </span>
         </div>
-        <p className="text-[8.5px] sm:text-[10px] text-darkSlate-500 font-bold tracking-tight sm:tracking-widest uppercase mt-0.5 flex items-center gap-1">
+        <p className="hidden min-[380px]:flex text-[8.5px] sm:text-[10px] text-darkSlate-500 font-bold tracking-tight sm:tracking-widest uppercase mt-0.5 items-center gap-1">
           <span>Vedic Astrology</span>
           <span className="text-amberGold-500">✦</span>
           <span>Cosmic AI</span>

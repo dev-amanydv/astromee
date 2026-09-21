@@ -11,10 +11,12 @@ export default function Hero() {
   return (
     <section
       id="heroSection"
-      className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-amberGold-50/90 via-white to-mysticLight-softPurple/50 border border-amberGold-300/70 shadow-xl p-4 sm:p-10 lg:p-12"
+      className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-amberGold-50/90 via-white to-mysticLight-softPurple/50 border border-amberGold-300/70 shadow-xl p-4 sm:p-10 lg:p-12 w-full max-w-full min-w-0"
     >
-      <div className="absolute -top-24 -right-24 w-96 h-96 bg-mysticLight-purple/15 rounded-full filter blur-3xl pointer-events-none"></div>
-      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-amberGold-400/20 rounded-full filter blur-3xl pointer-events-none"></div>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-mysticLight-purple/15 rounded-full filter blur-3xl"></div>
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-amberGold-400/20 rounded-full filter blur-3xl"></div>
+      </div>
 
       <div className="relative z-10 grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
         <div className="lg:col-span-7 space-y-4 sm:space-y-5 text-center lg:text-left">
@@ -53,7 +55,7 @@ export default function Hero() {
             </button>
           </div>
 
-          <div className="pt-4 sm:pt-6 grid grid-cols-3 gap-2 sm:gap-4 border-t border-amberGold-200/80 max-w-lg mx-auto lg:mx-0">
+          <div className="pt-4 sm:pt-6 grid grid-cols-3 gap-2 sm:gap-4 border-t border-amberGold-200/80 w-full max-w-lg mx-auto lg:mx-0">
             <div className="text-left">
               <div className="font-black text-base sm:text-lg text-darkSlate-900">500+</div>
               <div className="text-[10px] sm:text-[11px] text-darkSlate-500 font-semibold">Verified Masters</div>

@@ -41,7 +41,7 @@ export default function RootLayout({
           referrerPolicy="no-referrer"
         />
       </head>
-      <body className="min-h-screen flex flex-col justify-between selection:bg-amberGold-200 selection:text-amberGold-800 subtle-grid-bg font-sans">
+      <body className="min-h-screen w-full max-w-full min-w-0 overflow-x-hidden flex flex-col justify-between selection:bg-amberGold-200 selection:text-amberGold-800 subtle-grid-bg font-sans">
         <AppProvider>
           <ToastNotification />
           {children}

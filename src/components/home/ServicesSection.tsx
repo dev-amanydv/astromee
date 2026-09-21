@@ -15,7 +15,7 @@ export default function ServicesSection() {
   };
 
   return (
-    <section id="servicesGrid" className="space-y-4">
+    <section id="servicesGrid" className="space-y-4 w-full max-w-full min-w-0">
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
         <div>
           <h3 className="font-serif text-xl sm:text-2xl font-bold text-darkSlate-900 flex items-center gap-2">

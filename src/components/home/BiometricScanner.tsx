@@ -93,7 +93,7 @@ export default function BiometricScanner() {
   return (
     <section
       id="aiScannerSection"
-      className="cosmic-card rounded-3xl p-4 sm:p-8 lg:p-10 border-2 border-mysticLight-purple/30 relative overflow-hidden bg-gradient-to-br from-white via-sunshine-50 to-mysticLight-softPurple/30"
+      className="cosmic-card rounded-3xl p-4 sm:p-8 lg:p-10 border-2 border-mysticLight-purple/30 relative overflow-hidden bg-gradient-to-br from-white via-sunshine-50 to-mysticLight-softPurple/30 w-full max-w-full min-w-0"
     >
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
         <div>
@@ -246,27 +246,28 @@ export default function BiometricScanner() {
               </div>
             ))}
 
-            <div className="relative p-5 rounded-2xl bg-gradient-to-r from-sunshine-100 to-amberGold-50 border-2 border-amberGold-300 overflow-hidden text-center space-y-2">
-              <div className="filter blur-xs select-none text-[11px] text-darkSlate-400 space-y-1">
+            <div className="relative min-h-[195px] p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-sunshine-100 to-amberGold-50 border-2 border-amberGold-300 overflow-hidden text-center space-y-2 flex items-center justify-center">
+              <div className="filter blur-xs select-none text-[11px] text-darkSlate-400 space-y-1 w-full">
                 <p>🔒 Marriage Timing &amp; Spouse First Initial: [CONFIDENTIAL VEDIC DATA]</p>
                 <p>🔒 Foreign Travel Probability &amp; Lifetime Wealth Milestone Chart</p>
+                <p className="hidden sm:block">🔒 Planetary Transit Remedy Cycle &amp; Career Roadmap</p>
               </div>
-              <div className="absolute inset-0 bg-white/85 backdrop-blur-xs flex flex-col items-center justify-center p-4">
-                <div className="w-8 h-8 rounded-full bg-amberGold-100 text-amberGold-600 flex items-center justify-center text-sm mb-1 shadow-xs">
+              <div className="absolute inset-0 bg-white/85 backdrop-blur-xs flex flex-col items-center justify-center p-3 sm:p-4">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-amberGold-100 text-amberGold-600 flex items-center justify-center text-xs sm:text-sm mb-1 shadow-xs">
                   <i className="fa-solid fa-lock"></i>
                 </div>
-                <h5 className="text-xs font-black text-darkSlate-900">
+                <h5 className="text-xs font-black text-darkSlate-900 leading-tight">
                   Unlock Full 12-Page Complete Destiny Report
                 </h5>
-                <p className="text-[11px] text-darkSlate-600 font-medium mb-2.5">
+                <p className="text-[10.5px] sm:text-[11px] text-darkSlate-600 font-medium mb-2 sm:mb-2.5 mt-0.5">
                   Accurate Marriage Age, Lucky Gemstones &amp; Astrological Remedies
                 </p>
                 <button
                   onClick={() => setIsWalletModalOpen(true)}
-                  className="gold-gradient-bg hover:opacity-95 text-white text-xs font-extrabold px-6 py-2.5 rounded-full active:scale-95 transition-all flex items-center gap-2 shadow-md shadow-amberGold-500/20"
+                  className="gold-gradient-bg hover:opacity-95 text-white text-xs font-extrabold px-4 sm:px-6 py-2 sm:py-2.5 rounded-full active:scale-95 transition-all flex items-center gap-1.5 sm:gap-2 shadow-md shadow-amberGold-500/20"
                 >
                   <span>Unlock Full PDF for ₹49</span>
-                  <span className="text-[10px] bg-white/20 text-white px-2 py-0.5 rounded font-black">
+                  <span className="text-[9px] sm:text-[10px] bg-white/20 text-white px-1.5 sm:px-2 py-0.5 rounded font-black">
                     50 Coins
                   </span>
                 </button>

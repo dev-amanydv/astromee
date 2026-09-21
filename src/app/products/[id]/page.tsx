@@ -86,7 +86,7 @@ export default function ProductDetailPage() {
         <Header />
       </div>
 
-      <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-6 space-y-6 sm:space-y-8 min-h-[70vh]">
+      <main className="w-full max-w-7xl min-w-0 mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-6 space-y-6 sm:space-y-8 min-h-[70vh] overflow-x-hidden">
         <div className="flex items-center justify-between gap-2 sm:gap-4">
           <nav className="flex items-center gap-2 text-xs font-semibold text-darkSlate-500 overflow-x-auto no-scrollbar">
             <Link href="/" className="hover:text-amberGold-700 transition-colors flex items-center gap-1">

@@ -22,7 +22,7 @@ export default function Home() {
 
       <QuickAccessCarousel />
 
-      <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-6 space-y-8 sm:space-y-10">
+      <main className="w-full max-w-7xl min-w-0 mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-6 space-y-8 sm:space-y-10 overflow-x-hidden">
         <Hero />
 
         <ServicesSection />
@@ -33,7 +33,7 @@ export default function Home() {
 
         <BiometricScanner />
 
-        <div id="interactiveToolsSection" className="grid lg:grid-cols-2 gap-6">
+        <div id="interactiveToolsSection" className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full min-w-0">
           <FlameCalculator />
           <KundliSection />
         </div>

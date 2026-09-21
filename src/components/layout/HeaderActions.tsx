@@ -14,19 +14,19 @@ export default function HeaderActions() {
   } = useApp();
 
   return (
-    <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+    <div className="flex items-center gap-1 sm:gap-3 shrink-0">
       <button
         onClick={() => setIsWalletModalOpen(true)}
-        className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-amberGold-50 via-amberGold-100 to-amberGold-50 hover:from-amberGold-100 hover:to-amberGold-200 border sm:border-2 border-amberGold-400 rounded-xl sm:rounded-2xl px-2 py-1 sm:px-3.5 sm:py-1.5 hover:shadow-md active:scale-95 transition-all group shadow-2xs"
+        className="flex items-center gap-1 sm:gap-2 bg-gradient-to-r from-amberGold-50 via-amberGold-100 to-amberGold-50 hover:from-amberGold-100 hover:to-amberGold-200 border sm:border-2 border-amberGold-400 rounded-xl sm:rounded-2xl px-1.5 py-1 sm:px-3.5 sm:py-1.5 hover:shadow-md active:scale-95 transition-all group shadow-2xs shrink-0"
       >
-        <span className="text-sm sm:text-base group-hover:rotate-12 transition-transform">🪙</span>
+        <span className="text-xs sm:text-base group-hover:rotate-12 transition-transform">🪙</span>
         <div className="text-left leading-tight">
-          <div className="text-[7px] sm:text-[8px] text-amberGold-800 font-black uppercase tracking-wider">
+          <div className="hidden sm:block text-[7px] sm:text-[8px] text-amberGold-800 font-black uppercase tracking-wider">
             Balance
           </div>
-          <div className="text-[11px] sm:text-xs font-black text-darkSlate-900 flex items-center gap-0.5 sm:gap-1">
+          <div className="text-[10px] sm:text-xs font-black text-darkSlate-900 flex items-center gap-0.5 sm:gap-1">
             <span id="userCoins">{coins}</span>{' '}
-            <span className="text-[9px] sm:text-[10px] text-darkSlate-500 font-bold">Coins</span>
+            <span className="text-[8px] sm:text-[10px] text-darkSlate-500 font-bold">Coins</span>
           </div>
         </div>
         <span className="hidden sm:inline-block bg-amberGold-500 text-white font-extrabold text-[10px] px-2 py-0.5 rounded-lg shadow-xs group-hover:bg-amberGold-600 transition-colors">
@@ -36,24 +36,24 @@ export default function HeaderActions() {
 
       <button
         onClick={() => setIsWheelModalOpen(true)}
-        className="relative p-2 sm:p-2.5 bg-white hover:bg-amberGold-50 active:scale-90 rounded-xl sm:rounded-2xl border border-amberGold-200 text-amberGold-600 hover:text-amberGold-700 shadow-xs transition-all flex items-center gap-1.5 text-xs font-black"
+        className="relative p-1.5 sm:p-2.5 bg-white hover:bg-amberGold-50 active:scale-90 rounded-xl sm:rounded-2xl border border-amberGold-200 text-amberGold-600 hover:text-amberGold-700 shadow-xs transition-all flex items-center gap-1.5 text-xs font-black shrink-0"
         title="Daily Lucky Spin"
       >
-        <i className="fa-solid fa-dharmachakra text-sm sm:text-base animate-spin-slow text-amberGold-500"></i>
+        <i className="fa-solid fa-dharmachakra text-xs sm:text-base animate-spin-slow text-amberGold-500"></i>
         <span className="hidden sm:inline">Spin</span>
-        <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5 sm:h-3 sm:w-3">
+        <span className="absolute -top-1 -right-1 flex h-2 sm:h-3 w-2 sm:w-3">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-mysticLight-pink opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 sm:h-3 sm:w-3 bg-mysticLight-pink border-2 border-white"></span>
+          <span className="relative inline-flex rounded-full h-2 sm:h-3 w-2 sm:w-3 bg-mysticLight-pink border sm:border-2 border-white"></span>
         </span>
       </button>
 
-      <div className="relative group">
-        <button className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-amberGold-400 to-mysticLight-purple p-0.5 shadow-sm hover:scale-105 active:scale-95 transition-transform flex items-center justify-center">
-          <div className="w-full h-full bg-white rounded-[10px] sm:rounded-[14px] flex items-center justify-center text-darkSlate-700">
-            <i className="fa-solid fa-user text-[11px] sm:text-xs text-amberGold-600"></i>
+      <div className="relative group shrink-0">
+        <button className="w-7 h-7 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-amberGold-400 to-mysticLight-purple p-0.5 shadow-sm hover:scale-105 active:scale-95 transition-transform flex items-center justify-center">
+          <div className="w-full h-full bg-white rounded-[9px] sm:rounded-[14px] flex items-center justify-center text-darkSlate-700">
+            <i className="fa-solid fa-user text-[10px] sm:text-xs text-amberGold-600"></i>
           </div>
         </button>
-        <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-2xl shadow-2xl border border-amberGold-200/80 p-3 z-50 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all space-y-2">
+        <div className="absolute right-0 top-full mt-2 w-52 sm:w-56 bg-white rounded-2xl shadow-2xl border border-amberGold-200/80 p-3 z-50 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all space-y-2 pointer-events-none group-hover:pointer-events-auto">
           <div className="border-b border-amberGold-100 pb-2 px-1">
             <div className="font-black text-darkSlate-900 text-xs">Astromee Seeker</div>
             <div className="text-[10px] text-emerald-700 font-bold flex items-center gap-1 mt-0.5">
@@ -101,7 +101,7 @@ export default function HeaderActions() {
 
       <button
         onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
-        className="xl:hidden p-2.5 rounded-2xl bg-sunshine-100 hover:bg-sunshine-200 border border-amberGold-200 text-darkSlate-700 text-base"
+        className="xl:hidden p-1.5 sm:p-2.5 rounded-xl sm:rounded-2xl bg-sunshine-100 hover:bg-sunshine-200 border border-amberGold-200 text-darkSlate-700 text-sm sm:text-base shrink-0"
         aria-label="Toggle mobile menu"
       >
         <i className="fa-solid fa-bars"></i>
