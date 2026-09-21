@@ -5,6 +5,7 @@ import QuickAccessCarousel from '@/components/home/QuickAccessCarousel';
 import Hero from '@/components/home/Hero';
 import ServicesSection from '@/components/home/ServicesSection';
 import AstrologersSection from '@/components/home/AstrologersSection';
+import FeaturedProductsSection from '@/components/home/FeaturedProductsSection';
 import BiometricScanner from '@/components/home/BiometricScanner';
 import FlameCalculator from '@/components/home/FlameCalculator';
 import KundliSection from '@/components/home/KundliSection';
@@ -27,6 +28,8 @@ export default function Home() {
         <ServicesSection />
 
         <AstrologersSection />
+
+        <FeaturedProductsSection />
 
         <BiometricScanner />
 
